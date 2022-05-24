@@ -1,0 +1,185 @@
+﻿<Page x:Class="AWPApp.View.Pages.Doctor.mpf.WorkersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AWPApp.View.Pages.Doctor.mpf"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="WorkersPage">
+
+    <Grid>
+        <Grid x:Name="GridWorkers">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TabControl x:Name="TabControlWorkers">
+                <TabItem Header="Просмотр" IsSelected="True">
+                    <Grid>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5px">
+                            <GroupBox Header="ФИО" Height="45" VerticalAlignment="Top">
+                                <StackPanel HorizontalAlignment="Left">
+                                    <TextBox x:Name="TextBoxSearchFilterFullName" Width="110px" TextChanged="TextBoxSearchFilterFullName_TextChanged"/>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Header="Специальность" Height="45" VerticalAlignment="Top">
+                                <StackPanel HorizontalAlignment="Left">
+                                    <ComboBox Width="110" x:Name="ComboBoxSearchFilterSpecial" SelectionChanged="ComboBoxSearchFilterSpecial_SelectionChanged"/>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Header="Начало смены" Height="45" VerticalAlignment="Top">
+                                <StackPanel HorizontalAlignment="Left">
+                                    <TextBox x:Name="TextBoxSearchFilterTimeStart" Width="110px" TextChanged="TextBoxSearchFilterTimeStart_TextChanged"/>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Header="Конец смены" Height="45" VerticalAlignment="Top">
+                                <StackPanel HorizontalAlignment="Left">
+                                    <TextBox x:Name="TextBoxSearchFilterTimeEnd" Width="110px" TextChanged="TextBoxSearchFilterTimeEnd_TextChanged"/>
+                                </StackPanel>
+                            </GroupBox>
+                        </StackPanel>
+                        <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal" Margin="5px"  Grid.Row="1">
+                            <Button Margin="5px 0" Click="ButtonFilterClear_Click" >Очистить поля</Button>
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Добавить/Удалить">
+                    <Grid>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5px">
+                            <GroupBox Header="Фамилия" Height="45" VerticalAlignment="Top">
+                                <StackPanel HorizontalAlignment="Left">
+                                    <TextBox x:Name="TextBoxAddLastName" Width="110px"/>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Header="Имя" Height="45" VerticalAlignment="Top">
+                                <StackPanel HorizontalAlignment="Left">
+                                    <TextBox x:Name="TextBoxAddFirstName" Width="110px"/>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Header="Отчество" Height="45" VerticalAlignment="Top">
+                                <StackPanel HorizontalAlignment="Left">
+                                    <TextBox x:Name="TextBoxAddPatronicName" Width="110px"/>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Header="Специальность" Height="45" VerticalAlignment="Top">
+                                <StackPanel HorizontalAlignment="Left">
+                                    <ComboBox Width="110" x:Name="ComboBoxAddSpecial"/>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Header="Начало работы" Height="45" VerticalAlignment="Top">
+                                <StackPanel HorizontalAlignment="Left">
+                                    <TextBox x:Name="TextBoxAddTimeStart" Width="110px"/>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Header="Конец работы" Height="45" VerticalAlignment="Top">
+                                <StackPanel HorizontalAlignment="Left">
+                                    <TextBox x:Name="TextBoxAddTimeEnd" Width="110px"/>
+                                </StackPanel>
+                            </GroupBox>
+                        </StackPanel>
+                        <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal" Margin="5px"  Grid.Row="1">
+                            <Button Click="ButtonDel_Click">Удалить</Button>
+                            <Button Margin="5px 0" Click="ButtonAddClear_Click" >Очистить поля</Button>
+                            <Button Click="ButtonAdd_Click">Добавить</Button>
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Редактировать">
+                    <Grid>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5px">
+                            <GroupBox Header="Фамилия" Height="45" VerticalAlignment="Top">
+                                <StackPanel HorizontalAlignment="Left">
+                                    <TextBox x:Name="TextBoxEditLastName" Width="110px" TextChanged="TextBoxSearchFilterFullName_TextChanged"/>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Header="Имя" Height="45" VerticalAlignment="Top">
+                                <StackPanel HorizontalAlignment="Left">
+                                    <TextBox x:Name="TextBoxEditFirstName" Width="110px" TextChanged="TextBoxSearchFilterFullName_TextChanged"/>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Header="Отчество" Height="45" VerticalAlignment="Top">
+                                <StackPanel HorizontalAlignment="Left">
+                                    <TextBox x:Name="TextBoxEditPatronicName" Width="110px" TextChanged="TextBoxSearchFilterFullName_TextChanged"/>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Header="Специальность" Height="45" VerticalAlignment="Top">
+                                <StackPanel HorizontalAlignment="Left">
+                                    <ComboBox Width="110" x:Name="ComboBoxEditSpecial"/>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Header="Начало работы" Height="45" VerticalAlignment="Top">
+                                <StackPanel HorizontalAlignment="Left">
+                                    <TextBox x:Name="TextBoxEditTimeStart" Width="110px" TextChanged="TextBoxSearchFilterTimeStart_TextChanged"/>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Header="Конец работы" Height="45" VerticalAlignment="Top">
+                                <StackPanel HorizontalAlignment="Left">
+                                    <TextBox x:Name="TextBoxEditTimeEnd" Width="110px" TextChanged="TextBoxSearchFilterTimeEnd_TextChanged"/>
+                                </StackPanel>
+                            </GroupBox>
+                        </StackPanel>
+                        <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal" Margin="5px"  Grid.Row="1">
+                            <Button Click="ButtonEditClear_Click">Очистить поля</Button>
+                            <Button Click="ButtonEditConfirm_Click" Margin="5px 0">Изменить</Button>
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+            <DataGrid x:Name="WorkersTable" AutoGenerateColumns="False" Grid.Row="2" CanUserAddRows="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="0.75*" Header="ФИО" Binding="{Binding FullName}"/>
+                    <DataGridTextColumn Width="0.35*" Header="Специальность" Binding="{Binding Path=Special.SpecialName}"/>
+                    <DataGridTextColumn Width="0.5*" Header="Начало смены" Binding="{Binding WorkerScheduleStart}"/>
+                    <DataGridTextColumn Width="0.5*" Header="Конец смены" Binding="{Binding WorkerScheduleEnd}"/>
+                    <DataGridTemplateColumn Header="Направления" Width="0.5*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Button Click="ButtonTicketsView_Click">Направления</Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Изменить" Width="0.5*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Button Click="ButtonEdit_Click">Изменить</Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <Grid Visibility="Collapsed" x:Name="GridWorkerTickets" Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.15*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel HorizontalAlignment="Left" Margin="10" Orientation="Horizontal">
+                    <StackPanel HorizontalAlignment="Left">
+                        <TextBlock TextAlignment="Right" Text="Специальность: "/>
+                        <TextBlock TextAlignment="Right" Text="ФИО: "/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Left">
+                        <TextBlock x:Name="TextBlockTicketsViewSpecial" TextAlignment="Left" Text="Специальность: "/>
+                        <TextBlock x:Name="TextBlockTicketsViewFullName" TextAlignment="Left" Text="ФИО: "/>
+                    </StackPanel>
+                </StackPanel>
+            <StackPanel HorizontalAlignment="Right" Margin="10">
+                <Button Click="Button_BackClick">Назад</Button>
+            </StackPanel>
+            <DataGrid x:Name="TicketsTable" AutoGenerateColumns="False" Grid.Row="1" CanUserAddRows="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="0.75*" Header="ФИО и дата рождения пациента" Binding="{Binding Path=Patient.FullNameAndBirthday}"/>
+                    <DataGridTextColumn Width="0.35*" Header="Регистрационный номер" Binding="{Binding Path=Patient.PatientId}"/>
+                    <DataGridTextColumn Width="0.35*" Header="Дата приёма" Binding="{Binding TicketFormatedDate}"/>
+                    <DataGridTextColumn Width="0.5*" Header="Номер палаты" Binding="{Binding Path=Room.GetRoomNumberAndDepartmentName}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Grid>
+</Page>

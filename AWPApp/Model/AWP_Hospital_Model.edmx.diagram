@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0fb4e895d87f4b62ae3b75820b8a3f3d" Name="Diagram1">
+        <EntityTypeShape EntityType="AWP_Hospital_WorkerModel.Department" Width="1.5" PointX="8.25" PointY="5.5" />
+        <EntityTypeShape EntityType="AWP_Hospital_WorkerModel.FixedRoom" Width="1.5" PointX="12.75" PointY="8.25" />
+        <EntityTypeShape EntityType="AWP_Hospital_WorkerModel.Job" Width="1.5" PointX="0.75" PointY="8.25" />
+        <EntityTypeShape EntityType="AWP_Hospital_WorkerModel.Patient" Width="1.5" PointX="5.25" PointY="2.75" />
+        <EntityTypeShape EntityType="AWP_Hospital_WorkerModel.Record" Width="1.5" PointX="7.5" PointY="8" />
+        <EntityTypeShape EntityType="AWP_Hospital_WorkerModel.Room" Width="1.5" PointX="10.5" PointY="7.875" />
+        <EntityTypeShape EntityType="AWP_Hospital_WorkerModel.Special" Width="1.5" PointX="3" PointY="6.875" />
+        <EntityTypeShape EntityType="AWP_Hospital_WorkerModel.Status" Width="1.5" PointX="13.5" PointY="11.5" />
+        <EntityTypeShape EntityType="AWP_Hospital_WorkerModel.TempertureList" Width="1.5" PointX="7.5" PointY="2.375" />
+        <EntityTypeShape EntityType="AWP_Hospital_WorkerModel.Ticket" Width="1.5" PointX="12.75" PointY="5" />
+        <EntityTypeShape EntityType="AWP_Hospital_WorkerModel.TicketHistory" Width="1.5" PointX="15.75" PointY="7.75" />
+        <EntityTypeShape EntityType="AWP_Hospital_WorkerModel.Users" Width="1.5" PointX="3" PointY="9.625" />
+        <EntityTypeShape EntityType="AWP_Hospital_WorkerModel.Worker" Width="1.5" PointX="5.25" PointY="7.25" />
+        <AssociationConnector Association="AWP_Hospital_WorkerModel.FK_TableRooms_TableDepartment" />
+        <AssociationConnector Association="AWP_Hospital_WorkerModel.FK_FixedRoom_Patient" />
+        <AssociationConnector Association="AWP_Hospital_WorkerModel.FK_FixedRoom_Room" />
+        <AssociationConnector Association="AWP_Hospital_WorkerModel.FK_Special_Job" />
+        <AssociationConnector Association="AWP_Hospital_WorkerModel.FK_User_Job" />
+        <AssociationConnector Association="AWP_Hospital_WorkerModel.FK_Worker_Job" />
+        <AssociationConnector Association="AWP_Hospital_WorkerModel.FK_Record_Patient" />
+        <AssociationConnector Association="AWP_Hospital_WorkerModel.FK_TempertureList_Patient" />
+        <AssociationConnector Association="AWP_Hospital_WorkerModel.FK_Ticket_Patient" />
+        <AssociationConnector Association="AWP_Hospital_WorkerModel.FK_TicketHistory_Patient" />
+        <AssociationConnector Association="AWP_Hospital_WorkerModel.FK_Record_Worker" />
+        <AssociationConnector Association="AWP_Hospital_WorkerModel.FK_Room_Worker" />
+        <AssociationConnector Association="AWP_Hospital_WorkerModel.FK_Ticket_Room" />
+        <AssociationConnector Association="AWP_Hospital_WorkerModel.FK_TicketHistory_Room" />
+        <AssociationConnector Association="AWP_Hospital_WorkerModel.FK_Worker_Special" />
+        <AssociationConnector Association="AWP_Hospital_WorkerModel.FK_TicketHistory_Status" />
+        <AssociationConnector Association="AWP_Hospital_WorkerModel.FK_Ticket_Worker" />
+        <AssociationConnector Association="AWP_Hospital_WorkerModel.FK_TicketHistory_Worker" />
+        <AssociationConnector Association="AWP_Hospital_WorkerModel.FK_Worker_User" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

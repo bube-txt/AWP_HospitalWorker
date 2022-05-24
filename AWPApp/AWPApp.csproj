@@ -1,0 +1,335 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D1BCAA4B-867B-4267-8D34-04C3483F7BD3}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>AWPApp</RootNamespace>
+    <AssemblyName>AWPApp</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\311-2%28student%29\Desktop\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>4FF06027039FB9F5AE77F897FA325B424CD70206</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>AWPApp_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Assets\Access\Roles.cs" />
+    <Compile Include="Model\AWP_Hospital_Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AWP_Hospital_Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AWP_Hospital_Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AWP_Hospital_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AWP_Hospital_Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AWP_Hospital_Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Core.cs" />
+    <Compile Include="Model\Department.cs">
+      <DependentUpon>AWP_Hospital_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FixedRoom.cs">
+      <DependentUpon>AWP_Hospital_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Job.cs">
+      <DependentUpon>AWP_Hospital_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PartialClasses\DepartmentPartial.cs" />
+    <Compile Include="Model\PartialClasses\PatientPartial.cs" />
+    <Compile Include="Model\PartialClasses\RecordPartial.cs" />
+    <Compile Include="Model\PartialClasses\RoomPartial.cs" />
+    <Compile Include="Model\PartialClasses\TicketHistoryPatrial.cs" />
+    <Compile Include="Model\PartialClasses\TicketPartial.cs" />
+    <Compile Include="Model\PartialClasses\WorkerPartial.cs" />
+    <Compile Include="Model\Patient.cs">
+      <DependentUpon>AWP_Hospital_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Record.cs">
+      <DependentUpon>AWP_Hospital_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Room.cs">
+      <DependentUpon>AWP_Hospital_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Special.cs">
+      <DependentUpon>AWP_Hospital_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>AWP_Hospital_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\sp_helpdiagrams_Result.cs">
+      <DependentUpon>AWP_Hospital_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Status.cs">
+      <DependentUpon>AWP_Hospital_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TempertureList.cs">
+      <DependentUpon>AWP_Hospital_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Ticket.cs">
+      <DependentUpon>AWP_Hospital_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TicketHistory.cs">
+      <DependentUpon>AWP_Hospital_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Users.cs">
+      <DependentUpon>AWP_Hospital_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Worker.cs">
+      <DependentUpon>AWP_Hospital_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\DepartmentViewModel.cs" />
+    <Compile Include="ViewModel\DoctorsViewModel.cs" />
+    <Compile Include="ViewModel\RoomsViewModel.cs" />
+    <Compile Include="ViewModel\UsersViewModel.cs" />
+    <Compile Include="View\Pages\Doctor\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\Doctor\MainPageFramePages\DepartmentsPage.xaml.cs">
+      <DependentUpon>DepartmentsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\Doctor\MainPageFramePages\PatientsPage.xaml.cs">
+      <DependentUpon>PatientsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\Doctor\MainPageFramePages\RoomsPage.xaml.cs">
+      <DependentUpon>RoomsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\Doctor\MainPageFramePages\TempertureListPage.xaml.cs">
+      <DependentUpon>TempertureListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\Doctor\MainPageFramePages\TicketsPage.xaml.cs">
+      <DependentUpon>TicketsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\Doctor\MainPageFramePages\WorkersPage.xaml.cs">
+      <DependentUpon>WorkersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Assets\Dictionaries\FontFamily.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="View\Pages\Doctor\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\Doctor\MainPageFramePages\DepartmentsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\Doctor\MainPageFramePages\PatientsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\Doctor\MainPageFramePages\RoomsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\Doctor\MainPageFramePages\TempertureListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\Doctor\MainPageFramePages\TicketsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\Doctor\MainPageFramePages\WorkersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\LoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Resource Include="Assets\Fonts\Montserrat\Montserrat-Black.ttf" />
+    <Resource Include="Assets\Fonts\Montserrat\Montserrat-BlackItalic.ttf" />
+    <Resource Include="Assets\Fonts\Montserrat\Montserrat-Bold.ttf" />
+    <Resource Include="Assets\Fonts\Montserrat\Montserrat-BoldItalic.ttf" />
+    <Resource Include="Assets\Fonts\Montserrat\Montserrat-ExtraBold.ttf" />
+    <Resource Include="Assets\Fonts\Montserrat\Montserrat-ExtraBoldItalic.ttf" />
+    <Resource Include="Assets\Fonts\Montserrat\Montserrat-ExtraLight.ttf" />
+    <Resource Include="Assets\Fonts\Montserrat\Montserrat-ExtraLightItalic.ttf" />
+    <Resource Include="Assets\Fonts\Montserrat\Montserrat-Italic.ttf" />
+    <Resource Include="Assets\Fonts\Montserrat\Montserrat-Light.ttf" />
+    <Resource Include="Assets\Fonts\Montserrat\Montserrat-LightItalic.ttf" />
+    <Resource Include="Assets\Fonts\Montserrat\Montserrat-Medium.ttf" />
+    <Resource Include="Assets\Fonts\Montserrat\Montserrat-MediumItalic.ttf" />
+    <Resource Include="Assets\Fonts\Montserrat\Montserrat-Regular.ttf" />
+    <Resource Include="Assets\Fonts\Montserrat\Montserrat-SemiBold.ttf" />
+    <Resource Include="Assets\Fonts\Montserrat\Montserrat-SemiBoldItalic.ttf" />
+    <Resource Include="Assets\Fonts\Montserrat\Montserrat-Thin.ttf" />
+    <Resource Include="Assets\Fonts\Montserrat\Montserrat-ThinItalic.ttf" />
+    <EntityDeploy Include="Model\AWP_Hospital_Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AWP_Hospital_Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="AWPApp_TemporaryKey.pfx" />
+    <None Include="Model\AWP_Hospital_Model.edmx.diagram">
+      <DependentUpon>AWP_Hospital_Model.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\AWPLibrary\AWPLibrary.csproj">
+      <Project>{f0be97a9-57d6-4249-ae5b-dc39baaecb47}</Project>
+      <Name>AWPLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\script.sql" />
+    <Resource Include="Assets\Images\Icons\edit.ico" />
+    <Resource Include="Assets\Images\Icons\calendar.ico" />
+    <Resource Include="Assets\Images\Icons\records.ico" />
+    <Resource Include="Assets\Images\Icons\archive.ico" />
+    <Resource Include="Assets\Images\Icons\book.ico" />
+    <Content Include="Model\AWP_Hospital_Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AWP_Hospital_Model.Context.cs</LastGenOutput>
+      <DependentUpon>AWP_Hospital_Model.edmx</DependentUpon>
+    </Content>
+    <Content Include="Model\AWP_Hospital_Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AWP_Hospital_Model.edmx</DependentUpon>
+      <LastGenOutput>AWP_Hospital_Model.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 и x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

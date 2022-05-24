@@ -1,0 +1,17 @@
+﻿<Window x:Class="AWPApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AWPApp"
+        mc:Ignorable="d"
+        FontFamily="Montserrat"
+        Title="MainWindow" 
+        Height="500" Width="1000"
+        MaxHeight="500" MaxWidth="1000"
+        MinHeight="500" MinWidth="1000">
+    <Grid>
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden">
+        </Frame>
+    </Grid>
+</Window>

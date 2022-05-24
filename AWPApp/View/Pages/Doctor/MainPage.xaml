@@ -1,0 +1,50 @@
+﻿<Page x:Class="AWPApp.View.Pages.Doctor.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AWPApp.View.Pages.Doctor"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="1000"
+      Title="MainPage">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.22*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.18*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" HorizontalAlignment="Left" Margin="5">
+            <TextBlock x:Name="TextBlockLastName" FontSize="18" HorizontalAlignment="Left" Text="Фамилия"/>
+            <TextBlock x:Name="TextBlockFirstName" FontSize="18" HorizontalAlignment="Left" Text="Имя"/>
+        </StackPanel>
+
+        <StackPanel Grid.ColumnSpan="3" Grid.Row="1">
+            <Border BorderBrush="Black" BorderThickness="0,1,0,0"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.ColumnSpan="3">
+            <TextBlock FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Добро пожаловать!"/>
+            <Border BorderBrush="Black" BorderThickness="0,0,0,1"/>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Right" Grid.Column="2" Margin="5">
+            <Button Click="Button_LogOutClick">Выйти</Button>
+            <TextBlock x:Name="TextBlockJobName" FontSize="18" HorizontalAlignment="Right" Text="Мед персонал"/>
+        </StackPanel>
+
+        <ListBox Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" FontSize="14">
+            <ListBoxItem x:Name="Departments" Selected="ListBoxItem_Selected_2" Content="Список отделений"/>
+            <ListBoxItem x:Name="Rooms" Selected="ListBoxItem_Selected_1" Content="Список палат"/>
+            <ListBoxItem x:Name="Doctors" Selected="ListBoxItem_Selected_4" Content="Список врачей"/>
+            <ListBoxItem x:Name="Patients" Selected="ListBoxItem_Selected" Content="Список пациентов"/>
+            <ListBoxItem x:Name="Tickets" Selected="ListBoxItem_Selected_3" Content="Список направлений"/>
+        </ListBox>
+        <Frame NavigationUIVisibility="Hidden" x:Name="MainPageFrame" Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+    </Grid>
+</Page>

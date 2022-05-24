@@ -1,0 +1,55 @@
+﻿<Page x:Class="AWPApp.View.Pages.Doctor.MainPageFrame.PatientListPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AWPApp.View.Pages.Doctor.MainPageFrame"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PatientListPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="30px"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Height="45px" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5px">
+            <GroupBox Header="Имя">
+                <StackPanel>
+                    <TextBox x:Name="TextBoxSearchFilterFirstName" Width="75px"/>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="Фамилия">
+                <StackPanel>
+                    <TextBox x:Name="TextBoxSearchFilterLastName" Width="75px"/>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="Номер">
+                <StackPanel>
+                    <TextBox x:Name="TextBoxSearchFilterRegNumber" ToolTip="Мягкий поиск не учитывается" Width="75px"/>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="Дата приёма">
+                <StackPanel>
+                    <TextBox x:Name="TextBoxSearchFilterDate" ToolTip="Мягкий поиск по умолчанию" Width="75px"/>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+        <StackPanel Margin="5px" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal" Margin="5px"  Grid.Row="1">
+            <Button Click="ButtonClearFilter_Click" ToolTip="Очистить поля фильтров" Margin="5px 0" >Очистить фильтр</Button>
+            <Button Click="ButtonFilter_Click" ToolTip="Применить выбранные фильтры">Применить фильтр</Button>
+        </StackPanel>
+
+        <DataGrid x:Name="PatientsTable" AutoGenerateColumns="False" Grid.Row="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="0.75*" Header="Имя" Binding="{Binding PatientFirstName}"/>
+                <DataGridTextColumn Width="*" Header="Фамилия" Binding="{Binding PatientLastName}"/>
+                <DataGridTextColumn Width="0.75*" Header="Номер" Binding="{Binding PatientRegNumber}"/>
+                <DataGridTextColumn Width="1.25*" Header="Дата приёма [YYYY-MM-DD]" Binding="{Binding PatientDate}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

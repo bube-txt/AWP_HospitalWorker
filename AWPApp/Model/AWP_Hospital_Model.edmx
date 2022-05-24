@@ -1,0 +1,1137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище AWP_Hospital_WorkerModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="DepartmentId" />
+          </Key>
+          <Property Name="DepartmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartmentName" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FixedRoom">
+          <Key>
+            <PropertyRef Name="FixedRoomId" />
+          </Key>
+          <Property Name="FixedRoomId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoomId" Type="int" Nullable="false" />
+          <Property Name="PatientId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Job">
+          <Key>
+            <PropertyRef Name="JobId" />
+          </Key>
+          <Property Name="JobId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="JobAccessLevel" Type="int" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="PatientId" />
+          </Key>
+          <Property Name="PatientId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PatientFirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PatientLastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PatientPatronicName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PatientDate" Type="date" Nullable="false" />
+          <Property Name="PatientInArchive" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Record">
+          <Key>
+            <PropertyRef Name="RecordId" />
+          </Key>
+          <Property Name="RecordId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PacientId" Type="int" Nullable="false" />
+          <Property Name="RecordHeader" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="RecordText" Type="nvarchar" MaxLength="4000" Nullable="false" />
+          <Property Name="DoctorId" Type="int" Nullable="false" />
+          <Property Name="RecordDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="RoomId" />
+          </Key>
+          <Property Name="RoomId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoomNumber" Type="int" Nullable="false" />
+          <Property Name="RoomDepartmentId" Type="int" Nullable="false" />
+          <Property Name="DoctorId" Type="int" />
+        </EntityType>
+        <EntityType Name="Special">
+          <Key>
+            <PropertyRef Name="SpecialId" />
+          </Key>
+          <Property Name="SpecialId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SpecialJobId" Type="int" Nullable="false" />
+          <Property Name="SpecialName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Name="StatusId" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="StatusName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TempertureList">
+          <Key>
+            <PropertyRef Name="TempertureListId" />
+          </Key>
+          <Property Name="TempertureListId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TempertureListData" Type="text" />
+          <Property Name="TempertureListPatientId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="TicketId" />
+          </Key>
+          <Property Name="TicketId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TicketPatientId" Type="int" Nullable="false" />
+          <Property Name="TicketDate" Type="date" Nullable="false" />
+          <Property Name="TicketDoctorId" Type="int" Nullable="false" />
+          <Property Name="TicketRoomId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TicketHistory">
+          <Key>
+            <PropertyRef Name="TicketHistoryId" />
+          </Key>
+          <Property Name="TicketHistoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TicketHistoryPatientId" Type="int" Nullable="false" />
+          <Property Name="TicketHistoryDate" Type="date" Nullable="false" />
+          <Property Name="TicketHistoryDoctorId" Type="int" Nullable="false" />
+          <Property Name="TicketHistoryRoomId" Type="int" Nullable="false" />
+          <Property Name="TicketHistoryFinishDate" Type="date" />
+          <Property Name="TicketHistoryStatusId" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="UserJobId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Worker">
+          <Key>
+            <PropertyRef Name="WorkerId" />
+          </Key>
+          <Property Name="WorkerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WorkerFirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="WorkerLastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="WorkerPatronicName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="WorkerJobId" Type="int" Nullable="false" />
+          <Property Name="WorkerScheduleStart" Type="time" Precision="0" />
+          <Property Name="WorkerScheduleEnd" Type="time" Precision="0" />
+          <Property Name="WorkerUserId" Type="int" />
+          <Property Name="WorkerSpecialId" Type="int" />
+        </EntityType>
+        <Association Name="FK_FixedRoom_Patient">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+          <End Role="FixedRoom" Type="Self.FixedRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="PatientId" />
+            </Principal>
+            <Dependent Role="FixedRoom">
+              <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FixedRoom_Room">
+          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+          <End Role="FixedRoom" Type="Self.FixedRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="RoomId" />
+            </Principal>
+            <Dependent Role="FixedRoom">
+              <PropertyRef Name="RoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Record_Patient">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+          <End Role="Record" Type="Self.Record" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="PatientId" />
+            </Principal>
+            <Dependent Role="Record">
+              <PropertyRef Name="PacientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Record_Worker">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
+          <End Role="Record" Type="Self.Record" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="WorkerId" />
+            </Principal>
+            <Dependent Role="Record">
+              <PropertyRef Name="DoctorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Room_Worker">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
+          <End Role="Room" Type="Self.Room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="WorkerId" />
+            </Principal>
+            <Dependent Role="Room">
+              <PropertyRef Name="DoctorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Special_Job">
+          <End Role="Job" Type="Self.Job" Multiplicity="1" />
+          <End Role="Special" Type="Self.Special" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job">
+              <PropertyRef Name="JobId" />
+            </Principal>
+            <Dependent Role="Special">
+              <PropertyRef Name="SpecialJobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TableRooms_TableDepartment">
+          <End Role="Department" Type="Self.Department" Multiplicity="1" />
+          <End Role="Room" Type="Self.Room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DepartmentId" />
+            </Principal>
+            <Dependent Role="Room">
+              <PropertyRef Name="RoomDepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TempertureList_Patient">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+          <End Role="TempertureList" Type="Self.TempertureList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="PatientId" />
+            </Principal>
+            <Dependent Role="TempertureList">
+              <PropertyRef Name="TempertureListPatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ticket_Patient">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="PatientId" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="TicketPatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ticket_Room">
+          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="RoomId" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="TicketRoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ticket_Worker">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="WorkerId" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="TicketDoctorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TicketHistory_Patient">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+          <End Role="TicketHistory" Type="Self.TicketHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="PatientId" />
+            </Principal>
+            <Dependent Role="TicketHistory">
+              <PropertyRef Name="TicketHistoryPatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TicketHistory_Room">
+          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+          <End Role="TicketHistory" Type="Self.TicketHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="RoomId" />
+            </Principal>
+            <Dependent Role="TicketHistory">
+              <PropertyRef Name="TicketHistoryRoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TicketHistory_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="TicketHistory" Type="Self.TicketHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="TicketHistory">
+              <PropertyRef Name="TicketHistoryStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TicketHistory_Worker">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
+          <End Role="TicketHistory" Type="Self.TicketHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="WorkerId" />
+            </Principal>
+            <Dependent Role="TicketHistory">
+              <PropertyRef Name="TicketHistoryDoctorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Job">
+          <End Role="Job" Type="Self.Job" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job">
+              <PropertyRef Name="JobId" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="UserJobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Worker_Job">
+          <End Role="Job" Type="Self.Job" Multiplicity="1" />
+          <End Role="Worker" Type="Self.Worker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job">
+              <PropertyRef Name="JobId" />
+            </Principal>
+            <Dependent Role="Worker">
+              <PropertyRef Name="WorkerJobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Worker_Special">
+          <End Role="Special" Type="Self.Special" Multiplicity="0..1" />
+          <End Role="Worker" Type="Self.Worker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Special">
+              <PropertyRef Name="SpecialId" />
+            </Principal>
+            <Dependent Role="Worker">
+              <PropertyRef Name="WorkerSpecialId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Worker_User">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Worker" Type="Self.Worker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Worker">
+              <PropertyRef Name="WorkerUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище AWP_Hospital_WorkerModelContainer">
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FixedRoom" EntityType="Self.FixedRoom" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Job" EntityType="Self.Job" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Record" EntityType="Self.Record" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Room" EntityType="Self.Room" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Special" EntityType="Self.Special" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TempertureList" EntityType="Self.TempertureList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ticket" EntityType="Self.Ticket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TicketHistory" EntityType="Self.TicketHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_FixedRoom_Patient" Association="Self.FK_FixedRoom_Patient">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="FixedRoom" EntitySet="FixedRoom" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FixedRoom_Room" Association="Self.FK_FixedRoom_Room">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="FixedRoom" EntitySet="FixedRoom" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Record_Patient" Association="Self.FK_Record_Patient">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="Record" EntitySet="Record" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Record_Worker" Association="Self.FK_Record_Worker">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="Record" EntitySet="Record" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Room_Worker" Association="Self.FK_Room_Worker">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="Room" EntitySet="Room" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Special_Job" Association="Self.FK_Special_Job">
+            <End Role="Job" EntitySet="Job" />
+            <End Role="Special" EntitySet="Special" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TableRooms_TableDepartment" Association="Self.FK_TableRooms_TableDepartment">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Room" EntitySet="Room" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TempertureList_Patient" Association="Self.FK_TempertureList_Patient">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="TempertureList" EntitySet="TempertureList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ticket_Patient" Association="Self.FK_Ticket_Patient">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ticket_Room" Association="Self.FK_Ticket_Room">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ticket_Worker" Association="Self.FK_Ticket_Worker">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TicketHistory_Patient" Association="Self.FK_TicketHistory_Patient">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="TicketHistory" EntitySet="TicketHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TicketHistory_Room" Association="Self.FK_TicketHistory_Room">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="TicketHistory" EntitySet="TicketHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TicketHistory_Status" Association="Self.FK_TicketHistory_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="TicketHistory" EntitySet="TicketHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TicketHistory_Worker" Association="Self.FK_TicketHistory_Worker">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="TicketHistory" EntitySet="TicketHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Job" Association="Self.FK_User_Job">
+            <End Role="Job" EntitySet="Job" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Worker_Job" Association="Self.FK_Worker_Job">
+            <End Role="Job" EntitySet="Job" />
+            <End Role="Worker" EntitySet="Worker" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Worker_Special" Association="Self.FK_Worker_Special">
+            <End Role="Special" EntitySet="Special" />
+            <End Role="Worker" EntitySet="Worker" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Worker_User" Association="Self.FK_Worker_User">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Worker" EntitySet="Worker" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AWP_Hospital_WorkerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="AWP_Hospital_WorkerEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(AWP_Hospital_WorkerModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(AWP_Hospital_WorkerModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="Department" EntityType="AWP_Hospital_WorkerModel.Department" />
+          <EntitySet Name="FixedRoom" EntityType="AWP_Hospital_WorkerModel.FixedRoom" />
+          <EntitySet Name="Job" EntityType="AWP_Hospital_WorkerModel.Job" />
+          <EntitySet Name="Patient" EntityType="AWP_Hospital_WorkerModel.Patient" />
+          <EntitySet Name="Record" EntityType="AWP_Hospital_WorkerModel.Record" />
+          <EntitySet Name="Room" EntityType="AWP_Hospital_WorkerModel.Room" />
+          <EntitySet Name="Special" EntityType="AWP_Hospital_WorkerModel.Special" />
+          <EntitySet Name="Status" EntityType="AWP_Hospital_WorkerModel.Status" />
+          <EntitySet Name="TempertureList" EntityType="AWP_Hospital_WorkerModel.TempertureList" />
+          <EntitySet Name="Ticket" EntityType="AWP_Hospital_WorkerModel.Ticket" />
+          <EntitySet Name="TicketHistory" EntityType="AWP_Hospital_WorkerModel.TicketHistory" />
+          <EntitySet Name="Users" EntityType="AWP_Hospital_WorkerModel.Users" />
+          <EntitySet Name="Worker" EntityType="AWP_Hospital_WorkerModel.Worker" />
+          <AssociationSet Name="FK_TableRooms_TableDepartment" Association="AWP_Hospital_WorkerModel.FK_TableRooms_TableDepartment">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Room" EntitySet="Room" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FixedRoom_Patient" Association="AWP_Hospital_WorkerModel.FK_FixedRoom_Patient">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="FixedRoom" EntitySet="FixedRoom" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FixedRoom_Room" Association="AWP_Hospital_WorkerModel.FK_FixedRoom_Room">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="FixedRoom" EntitySet="FixedRoom" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Special_Job" Association="AWP_Hospital_WorkerModel.FK_Special_Job">
+            <End Role="Job" EntitySet="Job" />
+            <End Role="Special" EntitySet="Special" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Job" Association="AWP_Hospital_WorkerModel.FK_User_Job">
+            <End Role="Job" EntitySet="Job" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Worker_Job" Association="AWP_Hospital_WorkerModel.FK_Worker_Job">
+            <End Role="Job" EntitySet="Job" />
+            <End Role="Worker" EntitySet="Worker" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Record_Patient" Association="AWP_Hospital_WorkerModel.FK_Record_Patient">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="Record" EntitySet="Record" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TempertureList_Patient" Association="AWP_Hospital_WorkerModel.FK_TempertureList_Patient">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="TempertureList" EntitySet="TempertureList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ticket_Patient" Association="AWP_Hospital_WorkerModel.FK_Ticket_Patient">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TicketHistory_Patient" Association="AWP_Hospital_WorkerModel.FK_TicketHistory_Patient">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="TicketHistory" EntitySet="TicketHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Record_Worker" Association="AWP_Hospital_WorkerModel.FK_Record_Worker">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="Record" EntitySet="Record" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Room_Worker" Association="AWP_Hospital_WorkerModel.FK_Room_Worker">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="Room" EntitySet="Room" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ticket_Room" Association="AWP_Hospital_WorkerModel.FK_Ticket_Room">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TicketHistory_Room" Association="AWP_Hospital_WorkerModel.FK_TicketHistory_Room">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="TicketHistory" EntitySet="TicketHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Worker_Special" Association="AWP_Hospital_WorkerModel.FK_Worker_Special">
+            <End Role="Special" EntitySet="Special" />
+            <End Role="Worker" EntitySet="Worker" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TicketHistory_Status" Association="AWP_Hospital_WorkerModel.FK_TicketHistory_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="TicketHistory" EntitySet="TicketHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ticket_Worker" Association="AWP_Hospital_WorkerModel.FK_Ticket_Worker">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TicketHistory_Worker" Association="AWP_Hospital_WorkerModel.FK_TicketHistory_Worker">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="TicketHistory" EntitySet="TicketHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Worker_User" Association="AWP_Hospital_WorkerModel.FK_Worker_User">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Worker" EntitySet="Worker" />
+          </AssociationSet>
+          </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="DepartmentId" />
+          </Key>
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmentName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Room" Relationship="AWP_Hospital_WorkerModel.FK_TableRooms_TableDepartment" FromRole="Department" ToRole="Room" />
+        </EntityType>
+        <EntityType Name="FixedRoom">
+          <Key>
+            <PropertyRef Name="FixedRoomId" />
+          </Key>
+          <Property Name="FixedRoomId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoomId" Type="Int32" Nullable="false" />
+          <Property Name="PatientId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Patient" Relationship="AWP_Hospital_WorkerModel.FK_FixedRoom_Patient" FromRole="FixedRoom" ToRole="Patient" />
+          <NavigationProperty Name="Room" Relationship="AWP_Hospital_WorkerModel.FK_FixedRoom_Room" FromRole="FixedRoom" ToRole="Room" />
+        </EntityType>
+        <EntityType Name="Job">
+          <Key>
+            <PropertyRef Name="JobId" />
+          </Key>
+          <Property Name="JobId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Special" Relationship="AWP_Hospital_WorkerModel.FK_Special_Job" FromRole="Job" ToRole="Special" />
+          <NavigationProperty Name="Users" Relationship="AWP_Hospital_WorkerModel.FK_User_Job" FromRole="Job" ToRole="Users" />
+          <NavigationProperty Name="Worker" Relationship="AWP_Hospital_WorkerModel.FK_Worker_Job" FromRole="Job" ToRole="Worker" />
+          <Property Name="JobAccessLevel" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="PatientId" />
+          </Key>
+          <Property Name="PatientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientFirstName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PatientLastName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PatientPatronicName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PatientDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PatientInArchive" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="FixedRoom" Relationship="AWP_Hospital_WorkerModel.FK_FixedRoom_Patient" FromRole="Patient" ToRole="FixedRoom" />
+          <NavigationProperty Name="Record" Relationship="AWP_Hospital_WorkerModel.FK_Record_Patient" FromRole="Patient" ToRole="Record" />
+          <NavigationProperty Name="TempertureList" Relationship="AWP_Hospital_WorkerModel.FK_TempertureList_Patient" FromRole="Patient" ToRole="TempertureList" />
+          <NavigationProperty Name="Ticket" Relationship="AWP_Hospital_WorkerModel.FK_Ticket_Patient" FromRole="Patient" ToRole="Ticket" />
+          <NavigationProperty Name="TicketHistory" Relationship="AWP_Hospital_WorkerModel.FK_TicketHistory_Patient" FromRole="Patient" ToRole="TicketHistory" />
+        </EntityType>
+        <EntityType Name="Record">
+          <Key>
+            <PropertyRef Name="RecordId" />
+          </Key>
+          <Property Name="RecordId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PacientId" Type="Int32" Nullable="false" />
+          <Property Name="RecordHeader" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RecordText" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="DoctorId" Type="Int32" Nullable="false" />
+          <Property Name="RecordDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Patient" Relationship="AWP_Hospital_WorkerModel.FK_Record_Patient" FromRole="Record" ToRole="Patient" />
+          <NavigationProperty Name="Worker" Relationship="AWP_Hospital_WorkerModel.FK_Record_Worker" FromRole="Record" ToRole="Worker" />
+        </EntityType>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="RoomId" />
+          </Key>
+          <Property Name="RoomId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoomNumber" Type="Int32" Nullable="false" />
+          <Property Name="RoomDepartmentId" Type="Int32" Nullable="false" />
+          <Property Name="DoctorId" Type="Int32" />
+          <NavigationProperty Name="Department" Relationship="AWP_Hospital_WorkerModel.FK_TableRooms_TableDepartment" FromRole="Room" ToRole="Department" />
+          <NavigationProperty Name="FixedRoom" Relationship="AWP_Hospital_WorkerModel.FK_FixedRoom_Room" FromRole="Room" ToRole="FixedRoom" />
+          <NavigationProperty Name="Worker" Relationship="AWP_Hospital_WorkerModel.FK_Room_Worker" FromRole="Room" ToRole="Worker" />
+          <NavigationProperty Name="Ticket" Relationship="AWP_Hospital_WorkerModel.FK_Ticket_Room" FromRole="Room" ToRole="Ticket" />
+          <NavigationProperty Name="TicketHistory" Relationship="AWP_Hospital_WorkerModel.FK_TicketHistory_Room" FromRole="Room" ToRole="TicketHistory" />
+        </EntityType>
+        <EntityType Name="Special">
+          <Key>
+            <PropertyRef Name="SpecialId" />
+          </Key>
+          <Property Name="SpecialId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SpecialJobId" Type="Int32" Nullable="false" />
+          <Property Name="SpecialName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Job" Relationship="AWP_Hospital_WorkerModel.FK_Special_Job" FromRole="Special" ToRole="Job" />
+          <NavigationProperty Name="Worker" Relationship="AWP_Hospital_WorkerModel.FK_Worker_Special" FromRole="Special" ToRole="Worker" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Name="StatusId" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="StatusName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TicketHistory" Relationship="AWP_Hospital_WorkerModel.FK_TicketHistory_Status" FromRole="Status" ToRole="TicketHistory" />
+        </EntityType>
+        <EntityType Name="TempertureList">
+          <Key>
+            <PropertyRef Name="TempertureListId" />
+          </Key>
+          <Property Name="TempertureListId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TempertureListData" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TempertureListPatientId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Patient" Relationship="AWP_Hospital_WorkerModel.FK_TempertureList_Patient" FromRole="TempertureList" ToRole="Patient" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="TicketId" />
+          </Key>
+          <Property Name="TicketId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TicketPatientId" Type="Int32" Nullable="false" />
+          <Property Name="TicketDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TicketDoctorId" Type="Int32" Nullable="false" />
+          <Property Name="TicketRoomId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Patient" Relationship="AWP_Hospital_WorkerModel.FK_Ticket_Patient" FromRole="Ticket" ToRole="Patient" />
+          <NavigationProperty Name="Room" Relationship="AWP_Hospital_WorkerModel.FK_Ticket_Room" FromRole="Ticket" ToRole="Room" />
+          <NavigationProperty Name="Worker" Relationship="AWP_Hospital_WorkerModel.FK_Ticket_Worker" FromRole="Ticket" ToRole="Worker" />
+        </EntityType>
+        <EntityType Name="TicketHistory">
+          <Key>
+            <PropertyRef Name="TicketHistoryId" />
+          </Key>
+          <Property Name="TicketHistoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TicketHistoryPatientId" Type="Int32" Nullable="false" />
+          <Property Name="TicketHistoryDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TicketHistoryDoctorId" Type="Int32" Nullable="false" />
+          <Property Name="TicketHistoryRoomId" Type="Int32" Nullable="false" />
+          <Property Name="TicketHistoryFinishDate" Type="DateTime" Precision="0" />
+          <Property Name="TicketHistoryStatusId" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Patient" Relationship="AWP_Hospital_WorkerModel.FK_TicketHistory_Patient" FromRole="TicketHistory" ToRole="Patient" />
+          <NavigationProperty Name="Room" Relationship="AWP_Hospital_WorkerModel.FK_TicketHistory_Room" FromRole="TicketHistory" ToRole="Room" />
+          <NavigationProperty Name="Status" Relationship="AWP_Hospital_WorkerModel.FK_TicketHistory_Status" FromRole="TicketHistory" ToRole="Status" />
+          <NavigationProperty Name="Worker" Relationship="AWP_Hospital_WorkerModel.FK_TicketHistory_Worker" FromRole="TicketHistory" ToRole="Worker" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UserJobId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Job" Relationship="AWP_Hospital_WorkerModel.FK_User_Job" FromRole="Users" ToRole="Job" />
+          <NavigationProperty Name="Worker" Relationship="AWP_Hospital_WorkerModel.FK_Worker_User" FromRole="Users" ToRole="Worker" />
+        </EntityType>
+        <EntityType Name="Worker">
+          <Key>
+            <PropertyRef Name="WorkerId" />
+          </Key>
+          <Property Name="WorkerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WorkerFirstName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="WorkerLastName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="WorkerPatronicName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="WorkerJobId" Type="Int32" Nullable="false" />
+          <Property Name="WorkerScheduleStart" Type="Time" Precision="0" />
+          <Property Name="WorkerScheduleEnd" Type="Time" Precision="0" />
+          <Property Name="WorkerUserId" Type="Int32" />
+          <Property Name="WorkerSpecialId" Type="Int32" />
+          <NavigationProperty Name="Job" Relationship="AWP_Hospital_WorkerModel.FK_Worker_Job" FromRole="Worker" ToRole="Job" />
+          <NavigationProperty Name="Record" Relationship="AWP_Hospital_WorkerModel.FK_Record_Worker" FromRole="Worker" ToRole="Record" />
+          <NavigationProperty Name="Room" Relationship="AWP_Hospital_WorkerModel.FK_Room_Worker" FromRole="Worker" ToRole="Room" />
+          <NavigationProperty Name="Special" Relationship="AWP_Hospital_WorkerModel.FK_Worker_Special" FromRole="Worker" ToRole="Special" />
+          <NavigationProperty Name="Ticket" Relationship="AWP_Hospital_WorkerModel.FK_Ticket_Worker" FromRole="Worker" ToRole="Ticket" />
+          <NavigationProperty Name="TicketHistory" Relationship="AWP_Hospital_WorkerModel.FK_TicketHistory_Worker" FromRole="Worker" ToRole="TicketHistory" />
+          <NavigationProperty Name="Users" Relationship="AWP_Hospital_WorkerModel.FK_Worker_User" FromRole="Worker" ToRole="Users" />
+        </EntityType>
+        <Association Name="FK_TableRooms_TableDepartment">
+          <End Type="AWP_Hospital_WorkerModel.Department" Role="Department" Multiplicity="1" />
+          <End Type="AWP_Hospital_WorkerModel.Room" Role="Room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DepartmentId" />
+            </Principal>
+            <Dependent Role="Room">
+              <PropertyRef Name="RoomDepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FixedRoom_Patient">
+          <End Type="AWP_Hospital_WorkerModel.Patient" Role="Patient" Multiplicity="1" />
+          <End Type="AWP_Hospital_WorkerModel.FixedRoom" Role="FixedRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="PatientId" />
+            </Principal>
+            <Dependent Role="FixedRoom">
+              <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FixedRoom_Room">
+          <End Type="AWP_Hospital_WorkerModel.Room" Role="Room" Multiplicity="1" />
+          <End Type="AWP_Hospital_WorkerModel.FixedRoom" Role="FixedRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="RoomId" />
+            </Principal>
+            <Dependent Role="FixedRoom">
+              <PropertyRef Name="RoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Special_Job">
+          <End Type="AWP_Hospital_WorkerModel.Job" Role="Job" Multiplicity="1" />
+          <End Type="AWP_Hospital_WorkerModel.Special" Role="Special" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job">
+              <PropertyRef Name="JobId" />
+            </Principal>
+            <Dependent Role="Special">
+              <PropertyRef Name="SpecialJobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Job">
+          <End Type="AWP_Hospital_WorkerModel.Job" Role="Job" Multiplicity="1" />
+          <End Type="AWP_Hospital_WorkerModel.Users" Role="Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job">
+              <PropertyRef Name="JobId" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="UserJobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Worker_Job">
+          <End Type="AWP_Hospital_WorkerModel.Job" Role="Job" Multiplicity="1" />
+          <End Type="AWP_Hospital_WorkerModel.Worker" Role="Worker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job">
+              <PropertyRef Name="JobId" />
+            </Principal>
+            <Dependent Role="Worker">
+              <PropertyRef Name="WorkerJobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Record_Patient">
+          <End Type="AWP_Hospital_WorkerModel.Patient" Role="Patient" Multiplicity="1" />
+          <End Type="AWP_Hospital_WorkerModel.Record" Role="Record" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="PatientId" />
+            </Principal>
+            <Dependent Role="Record">
+              <PropertyRef Name="PacientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TempertureList_Patient">
+          <End Type="AWP_Hospital_WorkerModel.Patient" Role="Patient" Multiplicity="1" />
+          <End Type="AWP_Hospital_WorkerModel.TempertureList" Role="TempertureList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="PatientId" />
+            </Principal>
+            <Dependent Role="TempertureList">
+              <PropertyRef Name="TempertureListPatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ticket_Patient">
+          <End Type="AWP_Hospital_WorkerModel.Patient" Role="Patient" Multiplicity="1" />
+          <End Type="AWP_Hospital_WorkerModel.Ticket" Role="Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="PatientId" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="TicketPatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TicketHistory_Patient">
+          <End Type="AWP_Hospital_WorkerModel.Patient" Role="Patient" Multiplicity="1" />
+          <End Type="AWP_Hospital_WorkerModel.TicketHistory" Role="TicketHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="PatientId" />
+            </Principal>
+            <Dependent Role="TicketHistory">
+              <PropertyRef Name="TicketHistoryPatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Record_Worker">
+          <End Type="AWP_Hospital_WorkerModel.Worker" Role="Worker" Multiplicity="1" />
+          <End Type="AWP_Hospital_WorkerModel.Record" Role="Record" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="WorkerId" />
+            </Principal>
+            <Dependent Role="Record">
+              <PropertyRef Name="DoctorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Room_Worker">
+          <End Type="AWP_Hospital_WorkerModel.Worker" Role="Worker" Multiplicity="0..1" />
+          <End Type="AWP_Hospital_WorkerModel.Room" Role="Room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="WorkerId" />
+            </Principal>
+            <Dependent Role="Room">
+              <PropertyRef Name="DoctorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ticket_Room">
+          <End Type="AWP_Hospital_WorkerModel.Room" Role="Room" Multiplicity="1" />
+          <End Type="AWP_Hospital_WorkerModel.Ticket" Role="Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="RoomId" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="TicketRoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TicketHistory_Room">
+          <End Type="AWP_Hospital_WorkerModel.Room" Role="Room" Multiplicity="1" />
+          <End Type="AWP_Hospital_WorkerModel.TicketHistory" Role="TicketHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="RoomId" />
+            </Principal>
+            <Dependent Role="TicketHistory">
+              <PropertyRef Name="TicketHistoryRoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Worker_Special">
+          <End Type="AWP_Hospital_WorkerModel.Special" Role="Special" Multiplicity="0..1" />
+          <End Type="AWP_Hospital_WorkerModel.Worker" Role="Worker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Special">
+              <PropertyRef Name="SpecialId" />
+            </Principal>
+            <Dependent Role="Worker">
+              <PropertyRef Name="WorkerSpecialId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TicketHistory_Status">
+          <End Type="AWP_Hospital_WorkerModel.Status" Role="Status" Multiplicity="1" />
+          <End Type="AWP_Hospital_WorkerModel.TicketHistory" Role="TicketHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="TicketHistory">
+              <PropertyRef Name="TicketHistoryStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ticket_Worker">
+          <End Type="AWP_Hospital_WorkerModel.Worker" Role="Worker" Multiplicity="1" />
+          <End Type="AWP_Hospital_WorkerModel.Ticket" Role="Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="WorkerId" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="TicketDoctorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TicketHistory_Worker">
+          <End Type="AWP_Hospital_WorkerModel.Worker" Role="Worker" Multiplicity="1" />
+          <End Type="AWP_Hospital_WorkerModel.TicketHistory" Role="TicketHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="WorkerId" />
+            </Principal>
+            <Dependent Role="TicketHistory">
+              <PropertyRef Name="TicketHistoryDoctorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Worker_User">
+          <End Type="AWP_Hospital_WorkerModel.Users" Role="Users" Multiplicity="0..1" />
+          <End Type="AWP_Hospital_WorkerModel.Worker" Role="Worker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Worker">
+              <PropertyRef Name="WorkerUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище AWP_Hospital_WorkerModelContainer" CdmEntityContainer="AWP_Hospital_WorkerEntities">
+          <EntitySetMapping Name="Department">
+            <EntityTypeMapping TypeName="AWP_Hospital_WorkerModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FixedRoom">
+            <EntityTypeMapping TypeName="AWP_Hospital_WorkerModel.FixedRoom">
+              <MappingFragment StoreEntitySet="FixedRoom">
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+                <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+                <ScalarProperty Name="FixedRoomId" ColumnName="FixedRoomId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Job">
+            <EntityTypeMapping TypeName="AWP_Hospital_WorkerModel.Job">
+              <MappingFragment StoreEntitySet="Job">
+                <ScalarProperty Name="JobAccessLevel" ColumnName="JobAccessLevel" />
+                <ScalarProperty Name="JobName" ColumnName="JobName" />
+                <ScalarProperty Name="JobId" ColumnName="JobId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patient">
+            <EntityTypeMapping TypeName="AWP_Hospital_WorkerModel.Patient">
+              <MappingFragment StoreEntitySet="Patient">
+                <ScalarProperty Name="PatientInArchive" ColumnName="PatientInArchive" />
+                <ScalarProperty Name="PatientDate" ColumnName="PatientDate" />
+                <ScalarProperty Name="PatientPatronicName" ColumnName="PatientPatronicName" />
+                <ScalarProperty Name="PatientLastName" ColumnName="PatientLastName" />
+                <ScalarProperty Name="PatientFirstName" ColumnName="PatientFirstName" />
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Record">
+            <EntityTypeMapping TypeName="AWP_Hospital_WorkerModel.Record">
+              <MappingFragment StoreEntitySet="Record">
+                <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+                <ScalarProperty Name="RecordText" ColumnName="RecordText" />
+                <ScalarProperty Name="RecordHeader" ColumnName="RecordHeader" />
+                <ScalarProperty Name="PacientId" ColumnName="PacientId" />
+                <ScalarProperty Name="RecordId" ColumnName="RecordId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Room">
+            <EntityTypeMapping TypeName="AWP_Hospital_WorkerModel.Room">
+              <MappingFragment StoreEntitySet="Room">
+                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+                <ScalarProperty Name="RoomDepartmentId" ColumnName="RoomDepartmentId" />
+                <ScalarProperty Name="RoomNumber" ColumnName="RoomNumber" />
+                <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Special">
+            <EntityTypeMapping TypeName="AWP_Hospital_WorkerModel.Special">
+              <MappingFragment StoreEntitySet="Special">
+                <ScalarProperty Name="SpecialName" ColumnName="SpecialName" />
+                <ScalarProperty Name="SpecialJobId" ColumnName="SpecialJobId" />
+                <ScalarProperty Name="SpecialId" ColumnName="SpecialId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="AWP_Hospital_WorkerModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TempertureList">
+            <EntityTypeMapping TypeName="AWP_Hospital_WorkerModel.TempertureList">
+              <MappingFragment StoreEntitySet="TempertureList">
+                <ScalarProperty Name="TempertureListPatientId" ColumnName="TempertureListPatientId" />
+                <ScalarProperty Name="TempertureListData" ColumnName="TempertureListData" />
+                <ScalarProperty Name="TempertureListId" ColumnName="TempertureListId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ticket">
+            <EntityTypeMapping TypeName="AWP_Hospital_WorkerModel.Ticket">
+              <MappingFragment StoreEntitySet="Ticket">
+                <ScalarProperty Name="TicketRoomId" ColumnName="TicketRoomId" />
+                <ScalarProperty Name="TicketDoctorId" ColumnName="TicketDoctorId" />
+                <ScalarProperty Name="TicketDate" ColumnName="TicketDate" />
+                <ScalarProperty Name="TicketPatientId" ColumnName="TicketPatientId" />
+                <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TicketHistory">
+            <EntityTypeMapping TypeName="AWP_Hospital_WorkerModel.TicketHistory">
+              <MappingFragment StoreEntitySet="TicketHistory">
+                <ScalarProperty Name="TicketHistoryStatusId" ColumnName="TicketHistoryStatusId" />
+                <ScalarProperty Name="TicketHistoryFinishDate" ColumnName="TicketHistoryFinishDate" />
+                <ScalarProperty Name="TicketHistoryRoomId" ColumnName="TicketHistoryRoomId" />
+                <ScalarProperty Name="TicketHistoryDoctorId" ColumnName="TicketHistoryDoctorId" />
+                <ScalarProperty Name="TicketHistoryDate" ColumnName="TicketHistoryDate" />
+                <ScalarProperty Name="TicketHistoryPatientId" ColumnName="TicketHistoryPatientId" />
+                <ScalarProperty Name="TicketHistoryId" ColumnName="TicketHistoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="AWP_Hospital_WorkerModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserJobId" ColumnName="UserJobId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Worker">
+            <EntityTypeMapping TypeName="AWP_Hospital_WorkerModel.Worker">
+              <MappingFragment StoreEntitySet="Worker">
+                <ScalarProperty Name="WorkerSpecialId" ColumnName="WorkerSpecialId" />
+                <ScalarProperty Name="WorkerUserId" ColumnName="WorkerUserId" />
+                <ScalarProperty Name="WorkerScheduleEnd" ColumnName="WorkerScheduleEnd" />
+                <ScalarProperty Name="WorkerScheduleStart" ColumnName="WorkerScheduleStart" />
+                <ScalarProperty Name="WorkerJobId" ColumnName="WorkerJobId" />
+                <ScalarProperty Name="WorkerPatronicName" ColumnName="WorkerPatronicName" />
+                <ScalarProperty Name="WorkerLastName" ColumnName="WorkerLastName" />
+                <ScalarProperty Name="WorkerFirstName" ColumnName="WorkerFirstName" />
+                <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

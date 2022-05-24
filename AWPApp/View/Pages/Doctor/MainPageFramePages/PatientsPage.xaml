@@ -1,0 +1,252 @@
+﻿<Page x:Class="AWPApp.View.Pages.Doctor.mpf.PatientsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AWPApp.View.Pages.Doctor.mpf"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PatientsPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TabControl x:Name="TabControlPatients">
+            <TabItem Header="Просмотр" IsSelected="True">
+                <Grid>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5px">
+                        <GroupBox Header="ФИО" Height="45" VerticalAlignment="Top">
+                            <StackPanel HorizontalAlignment="Left">
+                                <TextBox x:Name="TextBoxSearchFilterFullName" Width="110px" TextChanged="TextBoxSearchFilterFullName_TextChanged"/>
+                            </StackPanel>
+                        </GroupBox>
+
+                        <GroupBox Header="Номер" Height="45" VerticalAlignment="Top">
+                            <StackPanel HorizontalAlignment="Left">
+                                <TextBox x:Name="TextBoxSearchFilterNumber" Width="110px" TextChanged="TextBoxSearchFilterNumber_TextChanged"/>
+                            </StackPanel>
+                        </GroupBox>
+                        <GroupBox Header="Дата [yyyy-mm-dd]" Height="45" VerticalAlignment="Top">
+                            <StackPanel HorizontalAlignment="Left">
+                                <TextBox x:Name="TextBoxSearchFilterDate" Width="110px" TextChanged="TextBoxSearchFilterDate_TextChanged"/>
+                            </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
+                    <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal" Margin="5px"  Grid.Row="1">
+                        <Button Margin="5px 0" Click="ButtonFilterClear_Click" >Очистить поля</Button>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Добавить" x:Name="TabItemAdd">
+                <Grid>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5px">
+                        <GroupBox Height="45" VerticalAlignment="Top" Header="Фамилия">
+                            <StackPanel HorizontalAlignment="Left">
+                                <TextBox x:Name="TextBoxAddLastName" Width="110px"/>
+                            </StackPanel>
+                        </GroupBox>
+                        <GroupBox Height="45" VerticalAlignment="Top" Header="Имя">
+                            <StackPanel HorizontalAlignment="Left">
+                                <TextBox x:Name="TextBoxAddFirstName" Width="110px"/>
+                            </StackPanel>
+                        </GroupBox>
+                        <GroupBox Height="45" VerticalAlignment="Top" Header="Отчество">
+                            <StackPanel HorizontalAlignment="Left">
+                                <TextBox x:Name="TextBoxAddPatronicName" Width="110px"/>
+                            </StackPanel>
+                        </GroupBox>
+                        <GroupBox Height="45" VerticalAlignment="Top" Header="Дата [yyyy-mm-dd]">
+                            <StackPanel HorizontalAlignment="Left">
+                                <TextBox x:Name="TextBoxAddDate" Width="110px"/>
+                            </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
+                    <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal" Margin="5px"  Grid.Row="1">
+                        <Button Margin="5px 0" Click="ButtonAddClear_Click" >Очистить поля</Button>
+                        <Button Click="ButtonAdd_Click">Добавить</Button>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Редактировать" x:Name="TabItemEdit">
+                <Grid>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5px">
+                        <GroupBox Height="45" VerticalAlignment="Top" Header="Фамилия">
+                            <StackPanel HorizontalAlignment="Left">
+                                <TextBox x:Name="TextBoxEditLastName" Width="110px"/>
+                            </StackPanel>
+                        </GroupBox>
+                        <GroupBox Height="45" VerticalAlignment="Top" Header="Имя">
+                            <StackPanel HorizontalAlignment="Left">
+                                <TextBox x:Name="TextBoxEditFirstName" Width="110px"/>
+                            </StackPanel>
+                        </GroupBox>
+                        <GroupBox Height="45" VerticalAlignment="Top" Header="Отчество">
+                            <StackPanel HorizontalAlignment="Left">
+                                <TextBox x:Name="TextBoxEditPatronicName" Width="110px"/>
+                            </StackPanel>
+                        </GroupBox>
+                        <GroupBox Height="45" VerticalAlignment="Top" Header="Дата [yyyy-mm-dd]">
+                            <StackPanel HorizontalAlignment="Left">
+                                <TextBox x:Name="TextBoxEditDate" Width="110px"/>
+                            </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
+                    <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal" Margin="5px"  Grid.Row="1">
+                        <Button Click="ButtonEditClear_Click">Очистить поля</Button>
+                        <Button Click="ButtonEditConfirm_Click" Margin="5px 0">Изменить</Button>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <DataGrid x:Name="PatientsTable" AutoGenerateColumns="False" Grid.Row="2" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="0.75*" Header="ФИО" Binding="{Binding FullName}"/>
+                <DataGridTextColumn Width="0.35*" Header="Дата рождения" Binding="{Binding PatientFormatedDate}"/>
+                <DataGridTextColumn Width="0.35*" Header="Рег. номер" Binding="{Binding PatientId}"/>
+                <DataGridTextColumn Width="auto" Header="Доктор" Binding="{Binding GetDoctorName}"/>
+                <DataGridTemplateColumn Header="Действия" Width="0.45*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Button Content="Действия">
+                                    <Button.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="Температурный лист" x:Name="ButtonTempertureList" Click="ButtonTempertureList_Click">
+                                                <MenuItem.Icon>
+                                                    <Image Source="/Assets/Images/Icons/calendar.ico"/>
+                                                </MenuItem.Icon>
+                                            </MenuItem>
+                                            <MenuItem Header="Дневная карта" IsEnabled="{Binding RoleAccess}" x:Name="ButtonDailyMap" Click="ButtonDailyMap_Click">
+                                                <MenuItem.Icon>
+                                                    <Image Source="/Assets/Images/Icons/book.ico"/>
+                                                </MenuItem.Icon>
+                                            </MenuItem>
+                                            <MenuItem Header="Изменить" x:Name="ButtonEdit" Click="ButtonEdit_Click">
+                                                <MenuItem.Icon>
+                                                    <Image Source="/Assets/Images/Icons/edit.ico"/>
+                                                </MenuItem.Icon>
+                                            </MenuItem>
+                                            <Separator/>
+                                            <MenuItem Header="В архив" x:Name="ButtonAddToArchive" Click="ButtonAddToArchive_Click">
+                                                <MenuItem.Icon>
+                                                    <Image Source="/Assets/Images/Icons/archive.ico"/>
+                                                </MenuItem.Icon>
+                                            </MenuItem>
+                                        </ContextMenu>
+                                    </Button.ContextMenu>
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <!-- ButtonTempertureList_Click -->
+        <!-- ButtonDailyMap_Click -->
+        <!-- ButtonEdit_Click -->
+        <!-- ButtonAddToArchive_Click -->
+        <Grid Visibility="Collapsed" x:Name="GridDailyMap" Grid.RowSpan="2" Background="White">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="0.2*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.3*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Column="5" HorizontalAlignment="Right" Margin="5">
+                <Button Width="70" Click="Button_ReturnClick">Назад</Button>
+            </StackPanel>
+            <StackPanel x:Name="ClearButton" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="5">
+                <Button Width="auto" Click="Button_ClearRecordFilterClick">Очистить фильтр</Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5">
+                <StackPanel HorizontalAlignment="Left" Margin="5">
+                    <TextBlock TextAlignment="Right" Text="ФИО: "/>
+                    <TextBlock TextAlignment="Right" Text="Дата рождения: "/>
+                    <TextBlock TextAlignment="Right" Text="Отделение: "/>
+                    <TextBlock TextAlignment="Right" Text="Палата: "/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left" Margin="0 5">
+                    <TextBlock TextAlignment="Left" x:Name="TextBlockDailyPatientFullName" Text="ФИО"/>
+                    <TextBlock TextAlignment="Left" x:Name="TextBlockDailyPatientDate" Text="Дата рождения "/>
+                    <TextBlock TextAlignment="Left" x:Name="TextBlockDailyDepartment" Text="Название отделения"/>
+                    <TextBlock TextAlignment="Left" x:Name="TextBlockDailyRoom" Text="Номер палаты"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Name="StackPanelSearchFilterBar" Grid.Column="1" Margin="5">
+                <GroupBox Header="Заголовок">
+                    <TextBox x:Name="TextBoxSearchFilterRecordHeaderText" TextChanged="TextBoxSearchFilterRecordHeader_TextChanged"/>
+                </GroupBox>
+                <StackPanel Grid.Column="1" HorizontalAlignment="Left" Orientation="Horizontal">
+                    <GroupBox Header="Специальность" Width="150">
+                        <ComboBox Name="ComboBoxSearchFilterSpecial" SelectionChanged="ComboBoxSearchFilterSpecial_SelectionChanged"/>
+                    </GroupBox>
+                    <GroupBox Header="Врач" Width="150">
+                        <ComboBox Name="ComboBoxSearchFilterDoctor" SelectionChanged="ComboBoxSearchFilterDoctor_SelectionChanged"/>
+                    </GroupBox>
+                    <GroupBox Header="Дата" Width="150">
+                        <DatePicker x:Name="DatePickerSearchFilterDate" SelectedDateChanged="DatePickerSearchFilterDate_SelectedDateChanged"/>
+                    </GroupBox>
+                </StackPanel>
+            </StackPanel>
+            <TabControl Grid.Row="1" Grid.ColumnSpan="5" x:Name="TabControlRecords" SelectionChanged="TabControl_SelectionChanged">
+                <TabItem Header="Просмотр" Selector.IsSelected="True">
+                    <ListView Grid.Row="1" x:Name="ListViewDailyMap" HorizontalContentAlignment="Stretch">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="Black" BorderThickness="0.5">
+                                    <Grid Margin="5">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock HorizontalAlignment="Left" MaxWidth="300px" Text="{Binding GetFormatedRecordDate}"/>
+                                        <TextBlock Grid.ColumnSpan="2" HorizontalAlignment="Center" MaxWidth="300px" FontSize="15" Text="{Binding RecordHeader}"/>
+                                        <StackPanel Grid.Column="1" HorizontalAlignment="Right">
+                                            <TextBlock TextAlignment="Right" Text="{Binding Path=Worker.Special.SpecialName}"/>
+                                            <TextBlock TextAlignment="Right" Text="{Binding Path=Worker.FullName}"/>
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Margin="2" MaxWidth="795">
+                                            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="{Binding GetRecordText}"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </TabItem>
+                <TabItem Header="Добавить">
+                    <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5px">
+                            <GroupBox Height="45" VerticalAlignment="Top" Header="Заголовок">
+                                <StackPanel HorizontalAlignment="Left">
+                                    <TextBox x:Name="TextBoxHeaderAdd" Width="110px"/>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Height="auto" Width="auto" VerticalAlignment="Top" Header="Текст">
+                                <StackPanel HorizontalAlignment="Left">
+                                    <RichTextBox  x:Name="RichTextBoxTextAdd" Height="210" Width="685px"/>
+                                </StackPanel>
+                            </GroupBox>
+                        </StackPanel>
+                        <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal" Margin="5px"  Grid.Row="1">
+                            <Button Click="ButtonAddRecord_Click">Добавить</Button>
+                        </StackPanel>
+                    </StackPanel>
+                </TabItem>
+            </TabControl>
+        </Grid>
+    </Grid>
+</Page>

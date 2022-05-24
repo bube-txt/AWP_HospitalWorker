@@ -1,0 +1,28 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace AWPApp.View.Pages.Doctor.mpf
+{
+    /// <summary>
+    /// Логика взаимодействия для TempertureListPage.xaml
+    /// </summary>
+    public partial class TempertureListPage : Page
+    {
+        public TempertureListPage()
+        {
+            InitializeComponent();
+        }
+    }
+}

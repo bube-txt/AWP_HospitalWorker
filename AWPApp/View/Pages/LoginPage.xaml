@@ -1,0 +1,38 @@
+﻿<Page x:Class="AWPApp.View.Pages.LoginPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AWPApp.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="LoginPage">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.25*"/>
+            <RowDefinition/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Center">
+            <TextBlock FontSize="20" HorizontalAlignment="Center" Text="Добро пожаловать!"/>
+            <TextBlock FontSize="20" HorizontalAlignment="Center" Text="Авторизируйтесь для входа в систему"/>
+            <Border BorderBrush="Black" BorderThickness="0,0,0,1"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock FontSize="20" TextAlignment="Center">Введите логин</TextBlock>
+            <TextBox FontSize="20" x:Name="LoginBox"/>
+            <TextBlock FontSize="20" TextAlignment="Center">Введите пароль</TextBlock>
+            <PasswordBox FontSize="20" x:Name="PasswordBox"/>
+            <Button x:Name="LoginButton" FontSize="20" Click="LoginButton_Click" >Войти</Button>
+            <TextBlock x:Name="ErrorTextBlock"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="5px">
+            <TextBlock FontSize="10" HorizontalAlignment="Center" Text="Copyright © 2202 by YAC"/>
+        </StackPanel>
+    </Grid>
+</Page>

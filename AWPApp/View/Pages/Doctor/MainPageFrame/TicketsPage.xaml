@@ -1,0 +1,170 @@
+﻿<Page x:Class="AWPApp.View.Pages.Doctor.MainPageFrame.TicketsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AWPApp.View.Pages.Doctor.MainPageFrame"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="TicketsPage">
+
+    <Grid>
+
+        <TabControl>
+            <TabItem Header="Актуально" IsSelected="True">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.5*"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TabControl>
+                        <TabItem Header="Просмотр" IsSelected="True">
+                            <Grid>
+                                <StackPanel Orientation="Horizontal" Height="45px" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5px">
+                                    <GroupBox Header="Фамилия">
+                                        <StackPanel HorizontalAlignment="Left">
+                                            <TextBox x:Name="TextBoxSearchFilterLastName" Width="110px"/>
+                                        </StackPanel>
+                                    </GroupBox>
+                                    <GroupBox Header="Имя">
+                                        <StackPanel HorizontalAlignment="Left">
+                                            <TextBox x:Name="TextBoxSearchFilterFirstName" Width="110px"/>
+                                        </StackPanel>
+                                    </GroupBox>
+                                    <GroupBox Header="Дата">
+                                        <StackPanel HorizontalAlignment="Left">
+                                            <DatePicker x:Name="DatePickerSearchFilterDate"/>
+                                        </StackPanel>
+                                    </GroupBox>
+                                    <GroupBox Header="Отделение">
+                                        <StackPanel HorizontalAlignment="Left">
+                                            <ComboBox x:Name="ComboBoxSearchFilterDepartment" Width="100" SelectionChanged="ComboBoxSearchFilterDepartment_SelectionChanged"/>
+                                        </StackPanel>
+                                    </GroupBox>
+                                    <GroupBox Header="Палата">
+                                        <StackPanel HorizontalAlignment="Left">
+                                            <ComboBox x:Name="ComboBoxSearchFilterRoom" Width="100"/>
+                                        </StackPanel>
+                                    </GroupBox>
+                                </StackPanel>
+                                <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal" Margin="5px"  Grid.Row="1">
+                                    <Button Margin="5px 0" Click="ButtonFilterClear_Click" >Очистить поля</Button>
+                                </StackPanel>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Добавить/Закрыть/Вернуть">
+                            <Grid>
+                                <StackPanel Orientation="Horizontal" Height="65px" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5px">
+                                    <GroupBox Header="Фамилия и имя">
+                                        <StackPanel HorizontalAlignment="Left">
+                                            <TextBox x:Name="TextBoxAddFilterFullName" Width="100" TextChanged="TextBoxAddFilterFullName_TextChanged"/>
+                                            <ComboBox x:Name="ComboBoxAddFullName" Width="100"/>
+                                        </StackPanel>
+                                    </GroupBox>
+                                    <GroupBox Height="50" VerticalAlignment="Top" Header="Дата">
+                                        <StackPanel HorizontalAlignment="Left">
+                                            <DatePicker x:Name="DatePickerAddDate"/>
+                                        </StackPanel>
+                                    </GroupBox>
+                                    <GroupBox Height="45" VerticalAlignment="Top" Header="Отделение">
+                                        <StackPanel HorizontalAlignment="Left">
+                                            <ComboBox x:Name="ComboBoxAddDepartment" Width="100" SelectionChanged="ComboBoxAddDepartment_SelectionChanged"/>
+                                        </StackPanel>
+                                    </GroupBox>
+                                    <GroupBox Height="45" VerticalAlignment="Top" Header="Палата">
+                                        <StackPanel HorizontalAlignment="Left">
+                                            <ComboBox x:Name="ComboBoxAddRoom" Width="100"/>
+                                        </StackPanel>
+                                    </GroupBox>
+                                </StackPanel>
+                                <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal" Margin="5px"  Grid.Row="1">
+                                    <Button Margin="5px 0" Click="ButtonDel_Click">Закрыть</Button>
+                                    <Button Click="ButtonReturn_Click">Возврат</Button>
+                                    <Button Margin="5px 0" Click="ButtonAddClear_Click" >Очистить поля</Button>
+                                    <Button Click="ButtonAdd_Click">Добавить</Button>
+                                </StackPanel>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                    <DataGrid x:Name="TicketsTable" AutoGenerateColumns="False" Grid.Row="2" CanUserAddRows="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="0.75*" Header="Фамилия и имя" Binding="{Binding Path=Patient.FullName}"/>
+                            <DataGridTextColumn Width="0.75*" Header="Дата" Binding="{Binding TicketFormatedDate}"/>
+                            <DataGridTextColumn Width="1.25*" Header="Номер палаты" Binding="{Binding Path=Room.RoomNumber}"/>
+                            <DataGridTextColumn Width="1.5*" Header="Название отделения" Binding="{Binding Path=Room.Department.DepartmentName}"/>
+                            <DataGridTemplateColumn Header="Выбрать">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <CheckBox Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"></CheckBox>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="История" HorizontalAlignment="Left">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.35*"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <StackPanel Orientation="Horizontal" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5px">
+                            <GroupBox Header="Фамилия">
+                                <StackPanel HorizontalAlignment="Left">
+                                    <TextBox x:Name="TextBoxSearchFilterHistoryLastName" Width="110px" TextChanged="TextBoxSearchFilterHistoryLastName_TextChanged"/>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Header="Имя">
+                                <StackPanel HorizontalAlignment="Left">
+                                    <TextBox x:Name="TextBoxSearchFilterHistoryFirstName" Width="110px" TextChanged="TextBoxSearchFilterHistoryFirstName_TextChanged"/>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Header="Отчество">
+                                <StackPanel HorizontalAlignment="Left">
+                                    <TextBox x:Name="TextBoxSearchFilterHistoryPatronicName" Width="110px" TextChanged="TextBoxSearchFilterHistoryPatronicName_TextChanged"/>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Header="Дата">
+                                <StackPanel HorizontalAlignment="Left">
+                                    <DatePicker x:Name="DatePickerSearchFilterHistoryDate" SelectedDateChanged="DatePickerSearchFilterHistoryDate_SelectedDateChanged"/>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Header="Отделение">
+                                <StackPanel HorizontalAlignment="Left">
+                                    <ComboBox x:Name="ComboBoxSearchFilterHistoryDepartment" Width="100" SelectionChanged="ComboBoxSearchFilterHistoryDepartment_SelectionChanged"/>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Header="Палата">
+                                <StackPanel HorizontalAlignment="Left">
+                                    <ComboBox x:Name="ComboBoxSearchFilterHistoryRoom" Width="100" SelectionChanged="ComboBoxSearchFilterHistoryRoom_SelectionChanged"/>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Header="Статус">
+                                <StackPanel HorizontalAlignment="Left">
+                                    <ComboBox x:Name="ComboBoxSearchFilterHistoryStatus" Width="100" SelectionChanged="ComboBoxSearchFilterHistoryStatus_SelectionChanged"/>
+                                </StackPanel>
+                            </GroupBox>
+                        </StackPanel>
+                        <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal" Margin="5px"  Grid.Row="1">
+                            <Button Click="ButtonFilterForceUpdate_Click" >Обновить</Button>
+                            <Button Margin="5px 0" Click="ButtonFilterHistoryClear_Click" >Очистить поля</Button>
+                        </StackPanel>
+                    </Grid>
+                    <DataGrid x:Name="TicketsHistoryTable" AutoGenerateColumns="False" Grid.Row="2" CanUserAddRows="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="0.75*" Header="Фамилия и имя" Binding="{Binding Path=Patient.FullName}"/>
+                            <DataGridTextColumn Width="0.75*" Header="Дата" Binding="{Binding TicketFormatedDate}"/>
+                            <DataGridTextColumn Width="1.25*" Header="Номер" Binding="{Binding Path=Room.RoomNumber}"/>
+                            <DataGridTextColumn Width="1.25*" Header="Отделение" Binding="{Binding Path=Room.Department.DepartmentName}"/>
+                            <DataGridTextColumn Width="1.25*" Header="Статус" Binding="{Binding Path=Status.StatusName}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Page>
