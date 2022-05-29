@@ -24,10 +24,6 @@ namespace AWPLibrary.Classes
         {
             return dateTime.ToString(@"hh\:mm\:ss");
         }
-        public static string GetFormatedTimeSpan(TimeSpan timeSpan)
-        {
-            return timeSpan.ToString("HH:mm:ss", CultureInfo.InvariantCulture);
-        }
         public static string GetFormatedDateTime(DateTime dateTime)
         {
             return dateTime.ToString("yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture);

@@ -28,14 +28,14 @@ namespace AWPApp.Model
         {
             get
             {
-                return ConvertationClass.GetFormatedTimeSpan((TimeSpan)WorkerScheduleStart);
+                return ConvertationClass.GetFormatedTime((TimeSpan)WorkerScheduleStart);
             }
         }
         public string WorkerEndTime
         {
             get
             {
-                return ConvertationClass.GetFormatedTimeSpan((TimeSpan)WorkerScheduleEnd);
+                return ConvertationClass.GetFormatedTime((TimeSpan)WorkerScheduleEnd);
             }
         }
 
