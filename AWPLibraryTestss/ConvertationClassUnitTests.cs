@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace AWPLibraryTests
+namespace AWPLibraryUnitTests
 {
     [TestClass]
     public class ConvertationClassUnitTests
