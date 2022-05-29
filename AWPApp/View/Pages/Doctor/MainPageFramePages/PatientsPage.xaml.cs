@@ -181,14 +181,11 @@ namespace AWPApp.View.Pages.Doctor.mpf
         /// <param name="e"></param>
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("123");
             MenuItem menuItem = (MenuItem)sender;
             ContextMenu contextMenu = (ContextMenu)menuItem.Parent;
             Button button = (Button)contextMenu.PlacementTarget;
 
             editPatient = button.DataContext as Patient;
-
-            MessageBox.Show(editPatient.FullName);
 
             TabControlPatients.SelectedIndex = 2;
 
@@ -439,6 +436,7 @@ namespace AWPApp.View.Pages.Doctor.mpf
                 {
                     PatientFirstName = TextBoxEditFirstName.Text.Trim(),
                     PatientLastName = TextBoxEditLastName.Text.Trim(),
+                    PatientPatronicName = TextBoxEditPatronicName.Text.Trim(),
                     PatientDate = Convert.ToDateTime(TextBoxEditDate.Text.Trim())
                 };
 
@@ -508,8 +506,17 @@ namespace AWPApp.View.Pages.Doctor.mpf
 
             TextBlockDailyPatientFullName.Text = selectedPatient.FullName;
             TextBlockDailyPatientDate.Text = selectedPatient.PatientFormatedDate;
-            TextBlockDailyDepartment.Text = selectedPatient.Ticket.Where(x => x.TicketRoomId == x.Room.RoomId).FirstOrDefault().Room.Department.DepartmentName.ToString();
-            TextBlockDailyRoom.Text = selectedPatient.PatientGetRoomNumberAndDoctorFullName;
+
+            if (selectedPatient.Ticket.Where(x => x.TicketRoomId == x.Room.RoomId).FirstOrDefault() != null)
+            {
+                TextBlockDailyDepartment.Text = selectedPatient.Ticket.Where(x => x.TicketRoomId == x.Room.RoomId).FirstOrDefault().Room.Department.DepartmentName.ToString();
+                TextBlockDailyRoom.Text = selectedPatient.PatientGetRoomNumberAndDoctorFullName;
+            }
+            else
+            {
+                TextBlockDailyDepartment.Text = "Не определен";
+                TextBlockDailyRoom.Text = "Не определен";
+            }
 
             ComboBoxSearchFilterSpecial.ItemsSource = db.context.Special.Where(x => x.SpecialJobId == 1).ToList();
             ComboBoxSearchFilterSpecial.DisplayMemberPath = "SpecialName";
@@ -672,6 +679,14 @@ namespace AWPApp.View.Pages.Doctor.mpf
             Button button = (Button)contextMenu.PlacementTarget;
 
             AddToArchive(button.DataContext as Patient);
+        }
+
+        private void PatientsTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            /*if (PatientsTable.SelectedItem != null)
+            {
+                PatientsTable.SelectedItem;
+            }*/
         }
     }
 }

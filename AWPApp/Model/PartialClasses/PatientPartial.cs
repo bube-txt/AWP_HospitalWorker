@@ -10,17 +10,6 @@ namespace AWPApp.Model
 {
     public partial class Patient
     {
-        public bool RoleAccessDailyMap
-        {
-            get
-            {
-                if ()
-                {
-
-                }
-                return false;
-            }
-        }
         public string FullName
         {
             get

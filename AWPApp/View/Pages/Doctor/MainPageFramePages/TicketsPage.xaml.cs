@@ -45,7 +45,7 @@ namespace AWPApp.View.Pages.Doctor.mpf
             ComboBoxAddDepartment.SelectedValuePath = "DepartmentId";
             ComboBoxAddDepartment.DisplayMemberPath = "DepartmentName";
 
-            ComboBoxAddFullName.ItemsSource = db.context.Patient.ToList();
+            ComboBoxAddFullName.ItemsSource = db.context.Patient.Where(x => x.PatientInArchive != 1).ToList();
             ComboBoxAddFullName.SelectedValuePath = "PatientId";
             ComboBoxAddFullName.DisplayMemberPath = "FullNameAndBirthday";
 
@@ -53,8 +53,7 @@ namespace AWPApp.View.Pages.Doctor.mpf
             ComboBoxSearchFilterHistoryStatus.SelectedValuePath = "StatusId";
             ComboBoxSearchFilterHistoryStatus.DisplayMemberPath = "StatusName";
 
-            TicketsTable.ItemsSource = db.context.Ticket.Where(x => x.Patient.PatientInArchive != 1).ToList();
-            TicketsHistoryTable.ItemsSource = db.context.TicketHistory.Where(x => x.Patient.PatientInArchive != 1).ToList();
+            UpdateTable();
         }
 
         #region [ события ]
@@ -338,7 +337,7 @@ namespace AWPApp.View.Pages.Doctor.mpf
                 }
                 db.context.SaveChanges();
             }
-
+            delTicketArray.Clear();
             UpdateTable();
         }
 
@@ -364,6 +363,7 @@ namespace AWPApp.View.Pages.Doctor.mpf
                 db.context.SaveChanges();
             }
 
+            delTicketArray.Clear();
             UpdateTable();
         }
 
@@ -376,10 +376,8 @@ namespace AWPApp.View.Pages.Doctor.mpf
         /// </summary>
         private void UpdateTable()
         {
-            ticketArray = db.context.Ticket.ToList();
-            TicketsTable.ItemsSource = ticketArray;
-            ticketHistoryArray = db.context.TicketHistory.ToList();
-            TicketsHistoryTable.ItemsSource = ticketHistoryArray;
+            TicketsTable.ItemsSource = db.context.Ticket.Where(x => x.Patient.PatientInArchive != 1).ToList();
+            TicketsHistoryTable.ItemsSource = db.context.TicketHistory.Where(x => x.Patient.PatientInArchive != 1).ToList();
         }
 
         #endregion

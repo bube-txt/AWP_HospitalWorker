@@ -44,7 +44,7 @@ namespace AWPApp.View.Pages.Doctor
             }
 
             #region Уровни доступа
-            MessageBox.Show(worker.Job.JobAccessLevel+"");
+
             // Администратор
             if (worker.Job.JobAccessLevel == (int)Roles.Administrator)
             {
