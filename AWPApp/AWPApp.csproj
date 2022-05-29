@@ -165,25 +165,25 @@
     <Compile Include="ViewModel\DoctorsViewModel.cs" />
     <Compile Include="ViewModel\RoomsViewModel.cs" />
     <Compile Include="ViewModel\UsersViewModel.cs" />
-    <Compile Include="View\Pages\Doctor\MainPage.xaml.cs">
+    <Compile Include="View\Pages\Personal\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Pages\Doctor\MainPageFramePages\DepartmentsPage.xaml.cs">
+    <Compile Include="View\Pages\Personal\MainPageFramePages\DepartmentsPage.xaml.cs">
       <DependentUpon>DepartmentsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Pages\Doctor\MainPageFramePages\PatientsPage.xaml.cs">
+    <Compile Include="View\Pages\Personal\MainPageFramePages\PatientsPage.xaml.cs">
       <DependentUpon>PatientsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Pages\Doctor\MainPageFramePages\RoomsPage.xaml.cs">
+    <Compile Include="View\Pages\Personal\MainPageFramePages\RoomsPage.xaml.cs">
       <DependentUpon>RoomsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Pages\Doctor\MainPageFramePages\TempertureListPage.xaml.cs">
+    <Compile Include="View\Pages\Personal\MainPageFramePages\TempertureListPage.xaml.cs">
       <DependentUpon>TempertureListPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Pages\Doctor\MainPageFramePages\TicketsPage.xaml.cs">
+    <Compile Include="View\Pages\Personal\MainPageFramePages\TicketsPage.xaml.cs">
       <DependentUpon>TicketsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Pages\Doctor\MainPageFramePages\WorkersPage.xaml.cs">
+    <Compile Include="View\Pages\Personal\MainPageFramePages\WorkersPage.xaml.cs">
       <DependentUpon>WorkersPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Pages\LoginPage.xaml.cs">
@@ -205,31 +205,31 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\Pages\Doctor\MainPage.xaml">
+    <Page Include="View\Pages\Personal\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Pages\Doctor\MainPageFramePages\DepartmentsPage.xaml">
+    <Page Include="View\Pages\Personal\MainPageFramePages\DepartmentsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Pages\Doctor\MainPageFramePages\PatientsPage.xaml">
+    <Page Include="View\Pages\Personal\MainPageFramePages\PatientsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Pages\Doctor\MainPageFramePages\RoomsPage.xaml">
+    <Page Include="View\Pages\Personal\MainPageFramePages\RoomsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Pages\Doctor\MainPageFramePages\TempertureListPage.xaml">
+    <Page Include="View\Pages\Personal\MainPageFramePages\TempertureListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Pages\Doctor\MainPageFramePages\TicketsPage.xaml">
+    <Page Include="View\Pages\Personal\MainPageFramePages\TicketsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Pages\Doctor\MainPageFramePages\WorkersPage.xaml">
+    <Page Include="View\Pages\Personal\MainPageFramePages\WorkersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

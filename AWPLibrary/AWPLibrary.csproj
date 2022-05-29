@@ -53,7 +53,6 @@
   <ItemGroup>
     <Compile Include="Classes\CheckClass.cs" />
     <Compile Include="Classes\ConvertationClass.cs" />
-    <Compile Include="Classes\StringClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -8,13 +8,9 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="TempertureListPage">
 
-    <Grid>
-        <Grid>
-            <DataGrid>
-                <DataGrid.Columns>
-                    <DataGridTextColumn />
-                </DataGrid.Columns>
-            </DataGrid>
-        </Grid>
+    <Grid Background="White">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Данная страница разработке!" FontSize="25" TextAlignment="Center"/>
+        </StackPanel>
     </Grid>
 </Page>
