@@ -175,7 +175,7 @@ namespace AWPApp.View.Pages.Doctor.mpf
         #region Изменение
 
         /// <summary>
-        /// Изменить выбранное отделение
+        /// Редактировать выбранное отделение
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -267,6 +267,10 @@ namespace AWPApp.View.Pages.Doctor.mpf
             string dateCased = "";
             bool dateChecked = false;
 
+            int doctorFilter = (int)ComboBoxDoctorNameEdit.SelectedValue;
+            int doctorCased = -1;
+            bool doctorChecked = false;
+
             // Существует ли имя
             if (fullNameFilter != "")
             {
@@ -286,6 +290,13 @@ namespace AWPApp.View.Pages.Doctor.mpf
             {
                 dateCased = dateFilter.Trim();
                 dateChecked = true;
+            }
+
+            // Существует ли доктор
+            if (doctorFilter != -1)
+            {
+                doctorCased = doctorFilter;
+                doctorChecked = true;
             }
 
 
@@ -308,6 +319,10 @@ namespace AWPApp.View.Pages.Doctor.mpf
                 { 
 
                 }
+            }
+            if (doctorChecked)
+            {
+                patientArray = patientArray.Where(x => x.GetDoctorId == doctorCased).ToList();
             }
 
             // Вывод
@@ -687,6 +702,11 @@ namespace AWPApp.View.Pages.Doctor.mpf
             {
                 PatientsTable.SelectedItem;
             }*/
+        }
+
+        private void ComboBoxDoctorNameEdit_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Search();
         }
     }
 }

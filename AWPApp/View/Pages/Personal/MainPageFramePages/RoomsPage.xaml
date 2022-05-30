@@ -36,7 +36,6 @@
                         </GroupBox>
                     </StackPanel>
                     <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal" Margin="5px"  Grid.Row="1">
-                        <Button Click="ButtonDel_Click">Удалить</Button>
                         <Button Margin="5px 0" Click="ButtonFilterClear_Click" >Очистить поля</Button>
                         <Button Click="ButtonAdd_Click">Добавить</Button>
                     </StackPanel>
@@ -100,11 +99,11 @@
                 <DataGridTextColumn IsReadOnly="True" Width="*" Header="Название отделения" Binding="{Binding Department.DepartmentName}"/>
                 <DataGridTextColumn IsReadOnly="True" Width="0.5*" Header="Номер палаты" Binding="{Binding RoomNumber}"/>
                 <DataGridTextColumn IsReadOnly="True" Width="1.25*" Header="Имя и фамилия врача" Binding="{Binding Worker.FullName}"/>
-                <DataGridTemplateColumn Header="Изменить" Width="0.5*">
+                <DataGridTemplateColumn Header="Редактировать" Width="0.5*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                <Button Click="ButtonEdit_Click">Изменить</Button>
+                                <Button Click="ButtonEdit_Click">Редактировать</Button>
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

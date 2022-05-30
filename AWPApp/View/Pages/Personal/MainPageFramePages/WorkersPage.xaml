@@ -122,7 +122,7 @@
                         </StackPanel>
                         <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal" Margin="5px"  Grid.Row="1">
                             <Button Click="ButtonEditClear_Click">Очистить поля</Button>
-                            <Button Click="ButtonEditConfirm_Click" Margin="5px 0">Изменить</Button>
+                            <Button Click="ButtonEditConfirm_Click" Margin="5px 0">Редактировать</Button>
                         </StackPanel>
                     </Grid>
                 </TabItem>
@@ -142,11 +142,11 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTemplateColumn Header="Изменить" Width="0.5*">
+                    <DataGridTemplateColumn Header="Редактировать" Width="0.5*">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <Button Click="ButtonEdit_Click">Изменить</Button>
+                                    <Button Click="ButtonEdit_Click">Редактировать</Button>
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>

@@ -162,7 +162,7 @@ namespace AWPApp.View.Pages.Doctor.mpf
         #region Изменение
 
         /// <summary>
-        /// Изменить выбранное отделение
+        /// Редактировать выбранное отделение
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

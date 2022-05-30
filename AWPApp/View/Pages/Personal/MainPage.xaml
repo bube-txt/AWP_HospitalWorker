@@ -44,6 +44,7 @@
             <ListBoxItem x:Name="Doctors" Selected="ListBoxItem_Selected_4" Content="Список врачей"/>
             <ListBoxItem x:Name="Patients" Selected="ListBoxItem_Selected" Content="Список пациентов"/>
             <ListBoxItem x:Name="Tickets" Selected="ListBoxItem_Selected_3" Content="Список направлений"/>
+            <ListBoxItem Selected="ListBoxItem_Selected_5" Content="Архив пациентов"/>
         </ListBox>
         <Frame NavigationUIVisibility="Hidden" x:Name="MainPageFrame" Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
     </Grid>

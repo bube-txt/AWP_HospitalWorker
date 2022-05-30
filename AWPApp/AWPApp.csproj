@@ -168,6 +168,9 @@
     <Compile Include="View\Pages\Personal\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Pages\Personal\MainPageFramePages\ArchivePage.xaml.cs">
+      <DependentUpon>ArchivePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Pages\Personal\MainPageFramePages\DepartmentsPage.xaml.cs">
       <DependentUpon>DepartmentsPage.xaml</DependentUpon>
     </Compile>
@@ -206,6 +209,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\Pages\Personal\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\Personal\MainPageFramePages\ArchivePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,0 +1,143 @@
+﻿<Page x:Class="AWPApp.View.Pages.Personal.MainPageFramePages.ArchivePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AWPApp.View.Pages.Personal.MainPageFramePages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ArchivePage">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="TabControlPatients">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5px">
+                <GroupBox Header="ФИО" Height="45" VerticalAlignment="Top">
+                    <StackPanel HorizontalAlignment="Left">
+                        <TextBox x:Name="TextBoxArchiveFullName" Width="110px" TextChanged="TextBoxArchiveFullName_TextChanged"/>
+                    </StackPanel>
+                </GroupBox>
+
+                <GroupBox Header="Номер" Height="45" VerticalAlignment="Top">
+                    <StackPanel HorizontalAlignment="Left">
+                        <TextBox x:Name="TextBoxArchiveNumber" Width="110px" TextChanged="TextBoxArchiveNumber_TextChanged"/>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="Дата [yyyy-mm-dd]" Height="45" VerticalAlignment="Top">
+                    <StackPanel HorizontalAlignment="Left">
+                        <TextBox x:Name="TextBoxArchiveDate" Width="110px" TextChanged="TextBoxArchiveDate_TextChanged"/>
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+            <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal" Margin="5px"  Grid.Row="1">
+                <Button Margin="5px 0" Click="ButtonFilterClear_Click" >Очистить поля</Button>
+            </StackPanel>
+        </Grid>
+        
+        <DataGrid x:Name="PatientsTable" AutoGenerateColumns="False" Grid.Row="2" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="0.75*" Header="Фамилия и имя" Binding="{Binding Path=FullName}"/>
+                <DataGridTextColumn Width="0.35*" Header="Рег. номер" Binding="{Binding PatientId}"/>
+                <DataGridTextColumn Width="0.75*" Header="Дата" Binding="{Binding PatientFormatedDate}"/>
+                <DataGridTemplateColumn Header="Действия" Width="0.45*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Button Content="Действия">
+                                    <Button.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="Дневная карта" x:Name="ButtonDailyMap" Click="ButtonDailyMap_Click">
+                                                <MenuItem.Icon>
+                                                    <Image Source="/Assets/Images/Icons/book.ico"/>
+                                                </MenuItem.Icon>
+                                            </MenuItem>
+                                        </ContextMenu>
+                                    </Button.ContextMenu>
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Grid Visibility="Collapsed" x:Name="GridDailyMap" Grid.RowSpan="2" Background="White">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="0.22*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.3*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Column="5" HorizontalAlignment="Right" Margin="5">
+                <Button Width="70" Click="Button_ReturnClick">Назад</Button>
+            </StackPanel>
+            <StackPanel x:Name="ClearButton" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="5">
+                <Button Width="auto" Click="Button_ClearRecordFilterClick">Очистить фильтр</Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5">
+                <StackPanel HorizontalAlignment="Left" Margin="5">
+                    <TextBlock TextAlignment="Right" Text="ФИО: "/>
+                    <TextBlock TextAlignment="Right" Text="Дата рождения: "/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left" Margin="0 5">
+                    <TextBlock TextAlignment="Left" x:Name="TextBlockDailyPatientFullName" Text="ФИО"/>
+                    <TextBlock TextAlignment="Left" x:Name="TextBlockDailyPatientDate" Text="Дата рождения "/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Name="StackPanelSearchFilterBar" Grid.Column="1" Margin="5">
+                <GroupBox Header="Заголовок">
+                    <TextBox x:Name="TextBoxSearchFilterRecordHeaderText" TextChanged="TextBoxSearchFilterRecordHeader_TextChanged"/>
+                </GroupBox>
+                <StackPanel Grid.Column="1" HorizontalAlignment="Left" Orientation="Horizontal">
+                    <GroupBox Header="Специальность" Width="150">
+                        <ComboBox Name="ComboBoxSearchFilterSpecial" SelectionChanged="ComboBoxSearchFilterSpecial_SelectionChanged"/>
+                    </GroupBox>
+                    <GroupBox Header="Врач" Width="150">
+                        <ComboBox Name="ComboBoxSearchFilterDoctor" SelectionChanged="ComboBoxSearchFilterDoctor_SelectionChanged"/>
+                    </GroupBox>
+                    <GroupBox Header="Дата" Width="150">
+                        <DatePicker x:Name="DatePickerSearchFilterDate" SelectedDateChanged="DatePickerSearchFilterDate_SelectedDateChanged"/>
+                    </GroupBox>
+                </StackPanel>
+            </StackPanel>
+            <ListView Grid.Row="1" Grid.ColumnSpan="3" x:Name="ListViewDailyMap" HorizontalContentAlignment="Stretch">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Black" BorderThickness="0.5">
+                            <Grid Margin="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock HorizontalAlignment="Left" MaxWidth="300px" Text="{Binding GetFormatedRecordDate}"/>
+                                <TextBlock Grid.ColumnSpan="2" HorizontalAlignment="Center" MaxWidth="300px" FontSize="15" Text="{Binding RecordHeader}"/>
+                                <StackPanel Grid.Column="1" HorizontalAlignment="Right">
+                                    <TextBlock TextAlignment="Right" Text="{Binding Path=Worker.Special.SpecialName}"/>
+                                    <TextBlock TextAlignment="Right" Text="{Binding Path=Worker.FullName}"/>
+                                </StackPanel>
+                                <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Margin="2" MaxWidth="795">
+                                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="{Binding GetRecordText}"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </Grid>
+</Page>

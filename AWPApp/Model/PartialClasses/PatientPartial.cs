@@ -31,6 +31,20 @@ namespace AWPApp.Model
                 }                
             }
         }
+        public int GetDoctorId
+        {
+            get
+            {
+                if (Ticket.Where(x => x.TicketPatientId == PatientId).OrderBy(x => x.TicketDate).FirstOrDefault() is null)
+                {
+                    return -1;
+                }
+                else
+                {
+                    return Ticket.Where(x => x.TicketPatientId == PatientId).OrderBy(x => x.TicketDate).FirstOrDefault().Worker.WorkerId;
+                }                
+            }
+        }
         public string FullNameAndBirthday
         {
             get

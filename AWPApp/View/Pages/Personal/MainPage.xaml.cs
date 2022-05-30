@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using AWPApp.Assets.Access;
 using AWPApp.Model;
 using AWPApp.View.Pages.Doctor.mpf;
+using AWPApp.View.Pages.Personal.MainPageFramePages;
 
 namespace AWPApp.View.Pages.Doctor
 {
@@ -96,6 +97,11 @@ namespace AWPApp.View.Pages.Doctor
         private void ListBoxItem_Selected_4(object sender, RoutedEventArgs e)
         {
             MainPageFrame.Content = new WorkersPage();
+        }
+
+        private void ListBoxItem_Selected_5(object sender, RoutedEventArgs e)
+        {
+            MainPageFrame.Content = new ArchivePage();
         }
     }
 }

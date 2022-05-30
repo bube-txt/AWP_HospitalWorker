@@ -34,6 +34,11 @@
                                 <TextBox x:Name="TextBoxSearchFilterDate" Width="110px" TextChanged="TextBoxSearchFilterDate_TextChanged"/>
                             </StackPanel>
                         </GroupBox>
+                        <GroupBox Header="Доктор">
+                            <StackPanel HorizontalAlignment="Left">
+                                <ComboBox x:Name="ComboBoxDoctorNameEdit" Width="140" SelectionChanged="ComboBoxDoctorNameEdit_SelectionChanged"/>
+                            </StackPanel>
+                        </GroupBox>
                     </StackPanel>
                     <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal" Margin="5px"  Grid.Row="1">
                         <Button Margin="5px 0" Click="ButtonFilterClear_Click" >Очистить поля</Button>
@@ -96,7 +101,7 @@
                     </StackPanel>
                     <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal" Margin="5px"  Grid.Row="1">
                         <Button Click="ButtonEditClear_Click">Очистить поля</Button>
-                        <Button Click="ButtonEditConfirm_Click" Margin="5px 0">Изменить</Button>
+                        <Button Click="ButtonEditConfirm_Click" Margin="5px 0">Редактировать</Button>
                     </StackPanel>
                 </Grid>
             </TabItem>
@@ -124,7 +129,7 @@
                                                     <Image Source="/Assets/Images/Icons/book.ico"/>
                                                 </MenuItem.Icon>
                                             </MenuItem>
-                                            <MenuItem Header="Изменить" x:Name="ButtonEdit" Click="ButtonEdit_Click">
+                                            <MenuItem Header="Редактировать" x:Name="ButtonEdit" Click="ButtonEdit_Click">
                                                 <MenuItem.Icon>
                                                     <Image Source="/Assets/Images/Icons/edit.ico"/>
                                                 </MenuItem.Icon>

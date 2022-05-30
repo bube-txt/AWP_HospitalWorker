@@ -194,7 +194,7 @@ namespace AWPApp.View.Pages.Doctor.mpf
         #region Изменение
 
         /// <summary>
-        /// Изменить выбранную палату
+        /// Редактировать выбранную палату
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
