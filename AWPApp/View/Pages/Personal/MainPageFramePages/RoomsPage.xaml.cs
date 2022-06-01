@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AWPLibrary.Classes;
 using System.Data.SqlClient;
+using AWPApp.Assets.Access;
 
 namespace AWPApp.View.Pages.Doctor.mpf
 {
@@ -42,7 +43,7 @@ namespace AWPApp.View.Pages.Doctor.mpf
             RoomsTable.ItemsSource = roomsArray;
 
             // поиск
-            ComboBoxDoctorName.ItemsSource = db.context.Worker.ToList();
+            ComboBoxDoctorName.ItemsSource = db.context.Worker.Where(x => x.Job.JobAccessLevel != (int)Roles.System).ToList();
             ComboBoxDoctorName.DisplayMemberPath = "FullName";
             ComboBoxDoctorName.SelectedValuePath = "WorkerId";
 
@@ -55,7 +56,7 @@ namespace AWPApp.View.Pages.Doctor.mpf
             ComboBoxDepartmentNameAdd.DisplayMemberPath = "DepartmentName";
             ComboBoxDepartmentNameAdd.SelectedValuePath = "DepartmentId";
 
-            ComboBoxDoctorNameAdd.ItemsSource = db.context.Worker.ToList();
+            ComboBoxDoctorNameAdd.ItemsSource = db.context.Worker.Where(x => x.Job.JobAccessLevel != (int)Roles.System).ToList();
             ComboBoxDoctorNameAdd.DisplayMemberPath = "FullName";
             ComboBoxDoctorNameAdd.SelectedValuePath = "WorkerId";
 
@@ -64,7 +65,7 @@ namespace AWPApp.View.Pages.Doctor.mpf
             ComboBoxDepartmentNameEdit.DisplayMemberPath = "DepartmentName";
             ComboBoxDepartmentNameEdit.SelectedValuePath = "DepartmentId";
 
-            ComboBoxDoctorNameEdit.ItemsSource = db.context.Worker.ToList();
+            ComboBoxDoctorNameEdit.ItemsSource = db.context.Worker.Where(x => x.Job.JobAccessLevel != (int)Roles.System).ToList();
             ComboBoxDoctorNameEdit.DisplayMemberPath = "FullName";
             ComboBoxDoctorNameEdit.SelectedValuePath = "WorkerId";
 

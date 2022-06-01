@@ -41,6 +41,10 @@ namespace AWPApp.View.Pages.Doctor.mpf
             HideDailyMap();
             ShowPatients();
 
+            ComboBoxSearchFilterDoctorName.ItemsSource = db.context.Worker.Where(x => x.Job.JobAccessLevel != (int)Roles.System).ToList();
+            ComboBoxSearchFilterDoctorName.SelectedValuePath = "WorkerId";
+            ComboBoxSearchFilterDoctorName.DisplayMemberPath = "FullName";
+
             // таблица
             patientArray = db.context.Patient.Where(x => x.PatientInArchive != 1).ToList();
             PatientsTable.ItemsSource = patientArray;
@@ -267,7 +271,7 @@ namespace AWPApp.View.Pages.Doctor.mpf
             string dateCased = "";
             bool dateChecked = false;
 
-            int doctorFilter = (int)ComboBoxDoctorNameEdit.SelectedValue;
+            int doctorFilter = (int)ComboBoxSearchFilterDoctorName.SelectedValue;
             int doctorCased = -1;
             bool doctorChecked = false;
 

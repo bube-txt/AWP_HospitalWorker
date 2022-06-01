@@ -36,7 +36,7 @@
                         </GroupBox>
                         <GroupBox Header="Доктор">
                             <StackPanel HorizontalAlignment="Left">
-                                <ComboBox x:Name="ComboBoxDoctorNameEdit" Width="140" SelectionChanged="ComboBoxDoctorNameEdit_SelectionChanged"/>
+                                <ComboBox x:Name="ComboBoxSearchFilterDoctorName" Width="140" SelectionChanged="ComboBoxDoctorNameEdit_SelectionChanged"/>
                             </StackPanel>
                         </GroupBox>
                     </StackPanel>
