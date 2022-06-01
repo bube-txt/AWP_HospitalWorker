@@ -118,8 +118,8 @@
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <Button Content="Действия">
                                     <Button.ContextMenu>
-                                        <ContextMenu DataContext="{Binding PlacementTarget.DataContext, RelativeSource={RelativeSource Self}}">
-                                            <MenuItem Header="Температурный лист" x:Name="ButtonTempertureList" IsEnabled="{Binding GetTempertureListAccess}" Click="ButtonTempertureList_Click">
+                                        <ContextMenu>
+                                            <MenuItem Header="Температурный лист" x:Name="ButtonTempertureList" Click="ButtonTempertureList_Click">
                                                 <MenuItem.Icon>
                                                     <Image Source="/Assets/Images/Icons/calendar.ico"/>
                                                 </MenuItem.Icon>

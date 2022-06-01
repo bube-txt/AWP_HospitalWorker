@@ -369,7 +369,7 @@ namespace AWPApp.View.Pages.Doctor.mpf
                 timeEndChecked = true;
             }
 
-            MessageBox.Show(firstNameChecked + "" + lastNameChecked + "" + patronicNameChecked + "" + specialChecked + "" + timeStartChecked + "" + timeEndChecked);
+            
 
             if (firstNameChecked &&
                 lastNameChecked &&

@@ -103,5 +103,10 @@ namespace AWPApp.View.Pages.Doctor
         {
             MainPageFrame.Content = new ArchivePage();
         }
+
+        private void ListBoxItem_Selected_6(object sender, RoutedEventArgs e)
+        {
+            MainPageFrame.Content = new UsersPage();
+        }
     }
 }

@@ -124,6 +124,7 @@
     <Compile Include="Model\PartialClasses\RoomPartial.cs" />
     <Compile Include="Model\PartialClasses\TicketHistoryPatrial.cs" />
     <Compile Include="Model\PartialClasses\TicketPartial.cs" />
+    <Compile Include="Model\PartialClasses\UsersPartial.cs" />
     <Compile Include="Model\PartialClasses\WorkerPartial.cs" />
     <Compile Include="Model\Patient.cs">
       <DependentUpon>AWP_Hospital_Model.tt</DependentUpon>
@@ -186,6 +187,9 @@
     <Compile Include="View\Pages\Personal\MainPageFramePages\TicketsPage.xaml.cs">
       <DependentUpon>TicketsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Pages\Personal\MainPageFramePages\UsersPage.xaml.cs">
+      <DependentUpon>UsersPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Pages\Personal\MainPageFramePages\WorkersPage.xaml.cs">
       <DependentUpon>WorkersPage.xaml</DependentUpon>
     </Compile>
@@ -233,6 +237,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Pages\Personal\MainPageFramePages\TicketsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\Personal\MainPageFramePages\UsersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

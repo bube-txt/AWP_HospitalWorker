@@ -41,6 +41,7 @@ namespace AWPApp.View.Pages.Doctor.mpf
             HideDailyMap();
             ShowPatients();
 
+            // TODO: [Контекстное меню] Раздать права доступа пользователям по ролям (Не получается)
             // ContextMenuDataContext.DataContext = db.context.Worker.ToList();
 
             ComboBoxSearchFilterDoctorName.ItemsSource = db.context.Worker.Where(x => x.Job.JobAccessLevel != (int)Roles.System).ToList();
