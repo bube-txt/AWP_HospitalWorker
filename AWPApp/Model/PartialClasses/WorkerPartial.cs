@@ -1,4 +1,5 @@
-﻿using AWPLibrary.Classes;
+﻿using AWPApp.Assets.Access;
+using AWPLibrary.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +37,134 @@ namespace AWPApp.Model
             get
             {
                 return ConvertationClass.GetFormatedTime((TimeSpan)WorkerScheduleEnd);
+            }
+        }
+
+        public bool GetTempertureListAccess
+        {
+            get
+            {
+                if (Job.JobAccessLevel == (int)Roles.System)
+                {
+                    return true;
+                }
+                else if (Job.JobAccessLevel == (int)Roles.MainDoctor)
+                {
+                    return true;
+                }
+                else 
+                if (Job.JobAccessLevel == (int)Roles.Doctor)
+                {
+                    return true;
+                }
+                else if (Job.JobAccessLevel == (int)Roles.Administrator)
+                {
+                    return false;
+                }
+                else if (Job.JobAccessLevel == (int)Roles.Archivist)
+                {
+                    return false;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        public bool GetDailyMapAccess
+        {
+            get
+            {
+                if (Job.JobAccessLevel == (int)Roles.System)
+                {
+                    return true;
+                }
+                else if (Job.JobAccessLevel == (int)Roles.MainDoctor)
+                {
+                    return true;
+                }
+                else 
+                if (Job.JobAccessLevel == (int)Roles.Doctor)
+                {
+                    return true;
+                }
+                else if (Job.JobAccessLevel == (int)Roles.Administrator)
+                {
+                    return false;
+                }
+                else if (Job.JobAccessLevel == (int)Roles.Archivist)
+                {
+                    return false;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        public bool GetEditAccess
+        {
+            get
+            {
+                if (Job.JobAccessLevel == (int)Roles.System)
+                {
+                    return true;
+                }
+                else if (Job.JobAccessLevel == (int)Roles.MainDoctor)
+                {
+                    return true;
+                }
+                else 
+                if (Job.JobAccessLevel == (int)Roles.Doctor)
+                {
+                    return true;
+                }
+                else if (Job.JobAccessLevel == (int)Roles.Administrator)
+                {
+                    return false;
+                }
+                else if (Job.JobAccessLevel == (int)Roles.Archivist)
+                {
+                    return false;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        public bool GetSendToArchiveAccess
+        {
+            get
+            {
+                if (Job.JobAccessLevel == (int)Roles.System)
+                {
+                    return true;
+                }
+                else if (Job.JobAccessLevel == (int)Roles.MainDoctor)
+                {
+                    return false;
+                }
+                else 
+                if (Job.JobAccessLevel == (int)Roles.Doctor)
+                {
+                    return false;
+                }
+                else if (Job.JobAccessLevel == (int)Roles.Administrator)
+                {
+                    return false;
+                }
+                else if (Job.JobAccessLevel == (int)Roles.Archivist)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
         }
 

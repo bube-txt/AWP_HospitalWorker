@@ -41,6 +41,8 @@ namespace AWPApp.View.Pages.Doctor.mpf
             HideDailyMap();
             ShowPatients();
 
+            // ContextMenuDataContext.DataContext = db.context.Worker.ToList();
+
             ComboBoxSearchFilterDoctorName.ItemsSource = db.context.Worker.Where(x => x.Job.JobAccessLevel != (int)Roles.System).ToList();
             ComboBoxSearchFilterDoctorName.SelectedValuePath = "WorkerId";
             ComboBoxSearchFilterDoctorName.DisplayMemberPath = "FullName";
