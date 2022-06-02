@@ -11,6 +11,20 @@ namespace AWPApp.Model
 {
     public partial class Worker
     {
+        public bool MedicalPersonal
+        {
+            get
+            {
+                if ((int)Roles.Doctor <= Job.JobAccessLevel)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
         public string FullName
         {
             get

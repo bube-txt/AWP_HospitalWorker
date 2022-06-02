@@ -193,7 +193,6 @@ namespace AWPApp.View.Pages.Doctor.mpf
 
         #region [ классы ]
 
-        #region { Пациент }
 
         #region Поиск
 
@@ -359,7 +358,6 @@ namespace AWPApp.View.Pages.Doctor.mpf
             {
                 timeStartCased = timeStartFilter.Trim();
                 timeStartChecked = true;
-                MessageBox.Show(TimeSpan.TryParse(timeStartCased, out TimeSpan time)+" " + time);
             }
 
             // Существует ли имя
@@ -374,6 +372,9 @@ namespace AWPApp.View.Pages.Doctor.mpf
             if (firstNameChecked &&
                 lastNameChecked &&
                 patronicNameChecked &&
+                specialChecked &&
+                timeStartChecked &&
+                timeEndChecked &&
                 TimeSpan.TryParse(timeStartCased, out TimeSpan timeStart) &&
                 TimeSpan.TryParse(timeEndCased, out TimeSpan timeEnd)
                 )
@@ -386,7 +387,7 @@ namespace AWPApp.View.Pages.Doctor.mpf
                     WorkerPatronicName = patronicNameCased,
                     WorkerScheduleStart = timeStart,
                     WorkerScheduleEnd = timeEnd,
-                    WorkerJobId = 1,
+                    WorkerJobId = db.context.Special.Where(x => x.SpecialId == (int)ComboBoxAddSpecial.SelectedValue).FirstOrDefault().SpecialJobId,
                     WorkerSpecialId = (int)ComboBoxAddSpecial.SelectedValue,
                 };
 
@@ -452,6 +453,30 @@ namespace AWPApp.View.Pages.Doctor.mpf
         /// </summary>
         private void EditPatientConfirm()
         {
+            if (String.IsNullOrWhiteSpace(TextBoxEditFirstName.Text))
+            {
+                return;
+            }
+            if (String.IsNullOrWhiteSpace(TextBoxEditLastName.Text))
+            {
+                return;
+            }
+            if (String.IsNullOrWhiteSpace(TextBoxEditPatronicName.Text))
+            {
+                return;
+            }
+            if (ComboBoxEditSpecial.SelectedIndex == -1)
+            {
+                return;
+            }
+            if (String.IsNullOrWhiteSpace(TextBoxEditTimeStart.Text))
+            {
+                return;
+            }
+            if (String.IsNullOrWhiteSpace(TextBoxEditTimeEnd.Text))
+            {
+                return;
+            }
             if (TimeSpan.TryParse(TextBoxEditTimeStart.Text, out TimeSpan timeStart) && TimeSpan.TryParse(TextBoxEditTimeEnd.Text, out TimeSpan timeEnd))
             {
                 Worker editedWorker = new Worker()
@@ -461,6 +486,7 @@ namespace AWPApp.View.Pages.Doctor.mpf
                     WorkerPatronicName = TextBoxEditPatronicName.Text.Trim(),
                     WorkerScheduleStart = timeStart,
                     WorkerScheduleEnd = timeEnd,
+                    WorkerJobId = db.context.Special.Where(x => x.SpecialId == (int)ComboBoxEditSpecial.SelectedValue).FirstOrDefault().SpecialJobId,
                     WorkerSpecialId = (int)ComboBoxEditSpecial.SelectedValue,
                 };
 
@@ -471,6 +497,7 @@ namespace AWPApp.View.Pages.Doctor.mpf
                 selectedWorker.WorkerPatronicName = editedWorker.WorkerPatronicName;
                 selectedWorker.WorkerScheduleStart = editedWorker.WorkerScheduleStart;
                 selectedWorker.WorkerScheduleEnd = editedWorker.WorkerScheduleEnd;
+                selectedWorker.WorkerJobId = editedWorker.WorkerJobId;
                 selectedWorker.WorkerSpecialId = editedWorker.WorkerSpecialId;
 
                 db.context.SaveChanges();
@@ -497,7 +524,6 @@ namespace AWPApp.View.Pages.Doctor.mpf
 
         #endregion Общее
 
-        #endregion { Пациент }
 
         #endregion [ классы ]
 

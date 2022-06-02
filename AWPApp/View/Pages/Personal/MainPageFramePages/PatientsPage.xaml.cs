@@ -274,7 +274,7 @@ namespace AWPApp.View.Pages.Doctor.mpf
             string dateCased = "";
             bool dateChecked = false;
 
-            int doctorFilter = (int)ComboBoxSearchFilterDoctorName.SelectedValue;
+            var doctorFilter = ComboBoxSearchFilterDoctorName.SelectedValue;
             int doctorCased = -1;
             bool doctorChecked = false;
 
@@ -300,9 +300,9 @@ namespace AWPApp.View.Pages.Doctor.mpf
             }
 
             // Существует ли доктор
-            if (doctorFilter != -1)
+            if (doctorFilter != null && (int)doctorFilter != -1)
             {
-                doctorCased = doctorFilter;
+                doctorCased = (int)doctorFilter;
                 doctorChecked = true;
             }
 

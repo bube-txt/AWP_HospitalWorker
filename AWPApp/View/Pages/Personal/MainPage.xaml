@@ -41,7 +41,7 @@
         <ListBox Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" FontSize="14">
             <ListBoxItem x:Name="Departments" Selected="ListBoxItem_Selected_2" Content="Список отделений"/>
             <ListBoxItem x:Name="Rooms" Selected="ListBoxItem_Selected_1" Content="Список палат"/>
-            <ListBoxItem x:Name="Doctors" Selected="ListBoxItem_Selected_4" Content="Список врачей"/>
+            <ListBoxItem x:Name="Doctors" Selected="ListBoxItem_Selected_4" Content="Список персонала"/>
             <ListBoxItem x:Name="Patients" Selected="ListBoxItem_Selected" Content="Список пациентов"/>
             <ListBoxItem x:Name="Tickets" Selected="ListBoxItem_Selected_3" Content="Список направлений"/>
             <ListBoxItem Selected="ListBoxItem_Selected_5" Content="Архив пациентов"/>
