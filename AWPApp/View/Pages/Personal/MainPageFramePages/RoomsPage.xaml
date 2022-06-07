@@ -37,7 +37,6 @@
                     </StackPanel>
                     <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal" Margin="5px"  Grid.Row="1">
                         <Button Margin="5px 0" Click="ButtonFilterClear_Click" >Очистить поля</Button>
-                        <Button Click="ButtonAdd_Click">Добавить</Button>
                     </StackPanel>
                 </Grid>
             </TabItem>
@@ -89,7 +88,7 @@
                     </StackPanel>
                     <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal" Margin="5px"  Grid.Row="1">
                         <Button Click="ButtonEditClear_Click">Очистить поля</Button>
-                        <Button Click="ButtonEditConfirm_Click" Margin="5px 0">Применить изменения</Button>
+                        <Button Click="ButtonEditConfirm_Click" Margin="5px 0">Применить</Button>
                     </StackPanel>
                 </Grid>
             </TabItem>

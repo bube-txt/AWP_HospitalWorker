@@ -80,7 +80,7 @@
                             </GroupBox>
                         </StackPanel>
                         <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal" Margin="5px"  Grid.Row="1">
-                            <Button Click="ButtonDel_Click">Удалить</Button>
+                            <Button Click="ButtonDel_Click" IsEnabled="False" ToolTip="В разработке">Удалить</Button>
                             <Button Margin="5px 0" Click="ButtonAddClear_Click" >Очистить поля</Button>
                             <Button Click="ButtonAdd_Click">Добавить</Button>
                         </StackPanel>
@@ -122,7 +122,7 @@
                         </StackPanel>
                         <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal" Margin="5px"  Grid.Row="1">
                             <Button Click="ButtonEditClear_Click">Очистить поля</Button>
-                            <Button Click="ButtonEditConfirm_Click" Margin="5px 0">Редактировать</Button>
+                            <Button Click="ButtonEditConfirm_Click" Margin="5px 0">Применить</Button>
                         </StackPanel>
                     </Grid>
                 </TabItem>

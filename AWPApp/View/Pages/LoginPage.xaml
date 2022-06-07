@@ -30,9 +30,5 @@
             <Button x:Name="LoginButton" FontSize="20" Click="LoginButton_Click" >Войти</Button>
             <TextBlock x:Name="ErrorTextBlock"/>
         </StackPanel>
-
-        <StackPanel Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="5px">
-            <TextBlock FontSize="10" HorizontalAlignment="Center" Text="Copyright © 2202 by YAC"/>
-        </StackPanel>
     </Grid>
 </Page>

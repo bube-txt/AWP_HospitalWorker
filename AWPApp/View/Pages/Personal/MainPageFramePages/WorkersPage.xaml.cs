@@ -418,12 +418,30 @@ namespace AWPApp.View.Pages.Doctor.mpf
                 // удаление выбранных пациентов
                 foreach (Worker worker in delWorkerArray)
                 {
-                    db.context.Worker.Remove(worker);
-                }
+                        db.context.Worker.Remove(worker);
+                    }
+            }
+            try
+            {
                 db.context.SaveChanges();
             }
+            catch (Exception e)
+            {
+                if (e.Message == "При обновлении записей возникла ошибка. Дополнительные сведения приведены во внутреннем исключении.")
+                {
+                    MessageBox.Show("При удалении данной записи проиходить фатальный конфликт, пожалуйста уберите всё что привязано к данной записи.","Произошел конфликт!");
+                }
+                else 
+                {
+                    MessageBox.Show(e.Message);
+                }
+            }
+            finally
+            {
+                delWorkerArray.Clear();
+                Update();
+            }
 
-            Update();
         }
 
         #endregion Удаление
