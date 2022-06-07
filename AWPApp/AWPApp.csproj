@@ -50,18 +50,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <ManifestCertificateThumbprint>4FF06027039FB9F5AE77F897FA325B424CD70206</ManifestCertificateThumbprint>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ManifestKeyFile>AWPApp_TemporaryKey.pfx</ManifestKeyFile>
-  </PropertyGroup>
-  <PropertyGroup>
-    <GenerateManifests>true</GenerateManifests>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignManifests>true</SignManifests>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -293,7 +281,6 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>AWP_Hospital_Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="AWPApp_TemporaryKey.pfx" />
     <None Include="Model\AWP_Hospital_Model.edmx.diagram">
       <DependentUpon>AWP_Hospital_Model.edmx</DependentUpon>
     </None>
